@@ -45,15 +45,6 @@
                             @endforeach
                             </div>
                             
-                            <div class="latest-news">
-                                <div class="title"><h2>Blog Category</h2></div>
-                                <ul class="block-content">
-                                    @foreach(list_blog_category() as $kat)
-                                    <span style="text-decoration: underline;"><a href="{{blog_category_url($kat)}}">{{$kat->nama}}</a></span>&nbsp;&nbsp;
-                                    @endforeach
-                                </ul>
-                            </div>
-                            
                             <div class="best-seller">
                                 <div class="title"><h2>Best Selling</h2></div>
                                 <ul class="block-content">
@@ -73,6 +64,19 @@
                                 <div class="btn-more">
                                     <a href="{{url('produk')}}">view more</a>
                                 </div>
+                            </div>
+
+                            <div class="latest-news">
+                                <div class="title"><h2>Latest News</h2></div>
+                                <ul class="block-content">
+                                    @foreach(list_blog() as $blog)
+                                    <li>
+                                        <h5 class="title-news">{{short_description($blog->judul,30)}}</h5>
+                                        <p class="desc">{{short_description($blog->isi,46)}} <a href="{{blog_url($blog)}}"><span>read more</span></a></p> 
+                                        <p class="date">{{date("F d, Y", strtotime($blog->created_at))}}</p>
+                                    </li>
+                                    @endforeach
+                                </ul>
                             </div>
 
                             {{ Theme::partial('subscribe') }}
