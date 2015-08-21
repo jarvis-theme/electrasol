@@ -33,6 +33,17 @@
                                                 @if($submenu->parent == $side_menu->id)
                                                 <li>
                                                     <a href="{{category_url($submenu)}}">{{$submenu->nama}}</a>
+                                                    @if($submenu->anak->count() != 0)
+                                                    <ul style="padding-left: 20px;">
+                                                        @foreach($submenu->anak as $submenu2)
+                                                        @if($submenu2->parent == $submenu->id)
+                                                        <li style="padding-top: 10px;">
+                                                            <a href="{{category_url($submenu2)}}">{{$submenu2->nama}}</a>
+                                                        </li>
+                                                        @endif
+                                                        @endforeach
+                                                    </ul>
+                                                    @endif
                                                 </li>
                                                 @endif
                                             @endforeach

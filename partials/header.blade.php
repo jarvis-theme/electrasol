@@ -12,7 +12,6 @@
                         <div class="search_box">
                             <form action="{{url('search')}}" method="post">
                                 <input type="text" placeholder="Search" name="search" required />
-                                <!-- <button style="background-color: #a70000;" class="btn btn-danger" type="submit"><i class="fa fa-search"></i></button> -->
                             </form>
                         </div>
                         {{shopping_cart()}}
@@ -58,7 +57,7 @@
                                                 <ul>
                                                     @foreach($submenu->anak as $submenu2)
                                                         @if($submenu2->parent == $submenu->id)
-                                                        <li class="submenu2">
+                                                        <li class="submenu2" style="padding-left: 45px;">
                                                             <a href="{{category_url($submenu2)}}">{{$submenu2->nama}}</a>
                                                         </li>
                                                         @endif

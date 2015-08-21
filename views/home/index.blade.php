@@ -3,12 +3,12 @@
         <div class="col-md-12">
             <div class="title-features">
                 <div class="row">
-                    <div class="col-md-6 left">
+                    <div class="col-md-12">
                         <h3>ALL PRODUCTS</h3>
                     </div>
-                    <div class="col-md-6 right">
+                    <!-- <div class="col-md-6 right">
                         <span>View as : </span>&nbsp;<a href=""><img class="img-responsive list" src="{{url(dirTemaToko().'electrasol/assets/images/grid-short.png')}}" />&nbsp;<img class="img-responsive list" src="{{url(dirTemaToko().'electrasol/assets/images/list-short.png')}}" /></a>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="features_items">
