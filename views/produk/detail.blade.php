@@ -89,7 +89,7 @@
                                 <div class="col-md-6 detail">
                                     <div class="row">
                                         <div class="view-product">
-                                            <img class="img-responsive" src="{{url(product_image_url($produk->gambar1,'medium'))}}" />
+                                            <img class="img-responsive" src="{{url(product_image_url($produk->gambar1,'large'))}}" style="width:100%" />
                                             <h3><a class="zoom fancybox" href="{{url(product_image_url($produk->gambar1,'large'))}}" title="{{$produk->nama}}"><i class="fa fa-search"></i></a></h3>
                                         </div>
                                         <div id="similar-product" class="carousel slide" data-ride="carousel">
@@ -112,14 +112,6 @@
                                                     @endif
                                                 </div>
                                             </div>
-
-                                            <!-- Controls -->
-                                            <!-- <a class="left item-control" href="#similar-product" data-slide="prev">
-                                                <i class="fa fa-angle-left"></i>
-                                            </a>
-                                            <a class="right item-control" href="#similar-product" data-slide="next">
-                                                <i class="fa fa-angle-right"></i>
-                                            </a> -->
                                         </div>
                                     </div>
                                 </div>
@@ -252,6 +244,9 @@
                     </div>
                 </div>
             </div>
+            
+            {{pluginTrustklik()}}
+
             <div id="advertise-homepage" align="center">
                 <div class="row">
                     <div class="row">

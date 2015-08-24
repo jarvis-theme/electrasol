@@ -5,7 +5,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="logo pull-left">
-                            <a href="{{url('home')}}"><img src="{{url(logo_image_url())}}" /></a>
+                            <a href="{{url('home')}}"><img src="{{url(logo_image_url())}}" style="margin-top: -50px;" /></a>
                         </div>
                     </div>
                     <div class="col-md-8" align="right">
