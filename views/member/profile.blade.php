@@ -8,7 +8,7 @@
 	<div class="inner-column row">
         <div id="left_sidebar" class="col-md-3">
             <div id="advertising" class="block">
-            	<div class="title"><h2>My Account</h2></div>
+            	<div><h2>My Account</h2></div>
             	<ul class="nav">
 					<li><a href="{{url('member')}}">Order History</a></li>                         
 					<li><a href="{{url('member/profile/edit')}}">Edit Profile</a></li>
