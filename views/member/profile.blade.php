@@ -1,5 +1,5 @@
 <div class="top-list container">
-    <h2 class="title"><i class="fa fa-user"></i> &nbsp;Edit Profile</h2>
+    <h2><i class="fa fa-user"></i> &nbsp;Edit Profile</h2>
     <div class="clr"></div>
     <hr>
 </div>
