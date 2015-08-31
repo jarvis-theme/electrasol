@@ -84,7 +84,9 @@
                     </div>
                     <div class="col-lg-9 col-xs-12 padding-right">
                         <div class="features_items row">
-                            <h2>Hasil Pencarian</h2>
+                            <div class="container">
+                                <h2>Hasil Pencarian</h2>
+                            </div>
                             
                             @if($jumlahCari != 0)
                                 @if(count($hasilpro) > 0)

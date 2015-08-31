@@ -1,19 +1,7 @@
 <section id="product-categories">
 	<div class="container">
 		<div class="inner-column row">
-	        <div class="col-lg-3 col-xs-12 col-sm-4 pull-right">
-	            <div id="advertising" class="block">
-	            @foreach(vertical_banner() as $banner)
-	            	<div class="img-block">
-	            		<a href="{{url($banner->url)}}">
-	            			{{HTML::image(banner_image_url($banner->gambar),'banner',array('width'=>'272','height'=>'auto','class'=>'img-responsive'))}}
-	        			</a>
-	                </div>
-	            @endforeach
-	            </div>
-	            <br>
-	        </div>
-	        <div class="col-lg-9 col-xs-12 col-sm-8">
+	        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
 	    		<p>Silahkan Login untuk kemudahan melakukan checkout. Cepat dan Mudah dalam bertransaksi. Mudah untuk mengetahui Order History dan Status.</p>
 				<br>
 				<h2>Log in</h2>

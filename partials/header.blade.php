@@ -90,7 +90,7 @@
     </div><!--/header-bottom-->
 </header><!--/header-->
 
-<section id="advertisement">
+<section id="advertisement" style="background: transparent linear-gradient(to bottom, #0F2E4B 0%, #2B5D7E 100%) repeat scroll 0% 0%;">
     @foreach(horizontal_banner() as $top_banner)
     <div class="container">
         <img src="{{url(banner_image_url($top_banner->gambar))}}" />
