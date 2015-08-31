@@ -63,7 +63,7 @@
                                     <li>
                                         <a href="{{product_url($best)}}">
                                             <div class="img-block">
-                                                <img width="70" height="70" src="{{url(product_image_url($best->gambar1))}}">
+                                                <img width="70" height="70" src="{{url(product_image_url($best->gambar1,'thumb'))}}">
                                             </div>
                                             <p class="product-name">{{short_description($best->nama,20)}}</p>
                                             <p class="price">{{price($best->hargaJual)}}</p>
@@ -101,7 +101,7 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo">
-                                            <img class="img-responsive thumb" src="{{url(product_image_url($products->gambar1))}}" />
+                                            <img class="img-responsive thumb" src="{{url(product_image_url($products->gambar1,'medium'))}}" />
                                             <p>{{short_description($products->nama,25)}}</p>
                                             <h2>{{price($products->hargaJual)}}</h2>
                                             <div class="btn-group col-xs-12 col-sm-12" role="group" aria-label="Default button group">

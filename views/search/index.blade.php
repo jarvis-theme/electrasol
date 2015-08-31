@@ -52,7 +52,7 @@
                                     <li>
                                         <a href="{{product_url($best)}}">
                                             <div class="img-block">
-                                                <img width="70" height="70" src="{{url(product_image_url($best->gambar1))}}">
+                                                <img width="70" height="70" src="{{url(product_image_url($best->gambar1,'thumb'))}}">
                                             </div>
                                             <p class="product-name">{{short_description($best->nama,20)}}</p>
                                             <p class="price">{{price($best->hargaJual)}}</p>
@@ -82,35 +82,29 @@
                             {{ Theme::partial('subscribe') }}
                         </div>
                     </div>
-                    <div class="col-lg-9 col-xs-12 col-sm-8">
-                        <div class="product-list col-xs-12">
-                            <div class="top-list ">
-                                <div class="col-xs-12 col-sm-12">
-                                    <h2>Hasil Pencarian</h2>
-                                </div>
-                                <div class="clr"></div>
-                            </div>
+                    <div class="col-lg-9 col-xs-12 padding-right">
+                        <div class="features_items row">
+                            <h2>Hasil Pencarian</h2>
+                            
                             @if($jumlahCari != 0)
                                 @if(count($hasilpro) > 0)
-                                <div class="row">
-                                    <ul class="grid">
                                     @foreach($hasilpro as $produks)
-                                        <li class="col-xs-6 col-sm-4">
-                                            <div class="image-container">
-                                                <a href="{{product_url($produks)}}">
-                                                    {{HTML::image(product_image_url($produks->gambar1),'produk',array('class'=>'img-responsive','style'=>'height: 252px;width: auto;margin: 0 auto;'))}}
-                                                </a>
+                                    <div class="col-md-4" align="center">
+                                        <div class="product-image-wrapper">
+                                            <div class="single-products">
+                                                <div class="productinfo">
+                                                    <img class="img-responsive thumb" src="{{url(product_image_url($produks->gambar1,'medium'))}}" />
+                                                    <p>{{short_description($produks->nama,25)}}</p>
+                                                    <h2>{{price($produks->hargaJual)}}</h2>
+                                                    <div class="btn-group col-xs-12 col-sm-12" role="group" aria-label="Default button group">
+                                                        <a type="button" class="btn btn-default col-xs-3 col-sm-3" href="{{product_url($produks)}}" style="background-color:#ffb900;color:#fff;"><i class="fa fa-eye"></i></a>
+                                                        <a type="button" class="btn btn-default col-xs-9 col-sm-9" href="{{product_url($produks)}}">Detail</a>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <h5 class="product-name">
-                                                <a href="{{product_url($produks)}}">
-                                                {{short_description($produks->nama, 25)}}
-                                                </a>
-                                            </h5>
-                                            <span class="price">{{price($produks->hargaJual)}}</span>
-                                            <a class="view" href="{{product_url($produks)}}">Lihat</a>
-                                        </li>
+                                        </div>
+                                    </div>
                                     @endforeach
-                                    </ul>
                                 </div>
                                 @endif
                                 @if(count($hasilhal) > 0 || count($hasilblog) > 0)

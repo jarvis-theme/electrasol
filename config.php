@@ -4,7 +4,7 @@ return array(
     'themesColor' => false,
     'layout' => false,
     'num_display' => array(
-        'home_product'=>9,
+        'home_product'=>8,
         'main_product'=>12,
         'related_product'=>6,
         'latest_product'=>5,

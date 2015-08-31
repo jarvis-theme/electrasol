@@ -17,6 +17,8 @@ body {
 ul li {
   list-style: none;
 }
+.product-information ul{padding-left: 0px;}
+.product-information ul li{list-style: inside;}
 
 a:hover {
 outline: none;
@@ -1609,10 +1611,9 @@ background: transparent;
   margin-top: 10px;
 }
 
-
-
 .view-product {
   position: relative;
+  background: #fff;
 }
 
 .view-product img {
@@ -1977,4 +1978,5 @@ input#qty {
 .shareblog > .fb-share-button{top: -5px;}
 @media only screen and (max-width: 640px) {
   .shareblog{float: none;}
+  .product-information ul{text-align: left;}
 }

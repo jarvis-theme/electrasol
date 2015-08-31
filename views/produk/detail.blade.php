@@ -52,7 +52,7 @@
                                     <li>
                                         <a href="{{product_url($best)}}">
                                             <div class="img-block">
-                                                <img width="70" height="70" src="{{url(product_image_url($best->gambar1))}}">
+                                                <img width="70" height="70" src="{{url(product_image_url($best->gambar1,'thumb'))}}">
                                             </div>
                                             <p class="product-name">{{short_description($best->nama,20)}}</p>
                                             <p class="price">{{price($best->hargaJual)}}</p>

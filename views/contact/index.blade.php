@@ -94,7 +94,7 @@
                             </div>
                             <div class="contact-desc">
                                 <br>
-                                <p><strong>Shop Address :</strong> {{$kontak->alamat}}</p>
+                                <p><strong>Alamat Toko :</strong> {{$kontak->alamat}}</p>
                                 @if($kontak->telepon != '')
                                 <p><strong>Telepon : </strong> {{$kontak->telepon}}</p>
                                 @endif
@@ -110,15 +110,15 @@
                             </div>
                             <form class="contact-form" action="{{url('kontak')}}" method="post">
                                 <p class="form-group">
-                                    <input class="form-control" placeholder="Name" name="namaKontak" type="text" required>
+                                    <input class="form-control" placeholder="Nama" name="namaKontak" type="text" required>
                                 </p>
                                 <p class="form-group">
                                     <input class="form-control" placeholder="Email Address" name="emailKontak" type="text" required>
                                 </p>
                                 <p class="form-group">
-                                    <textarea class="form-control" placeholder="Message" name="messageKontak" required></textarea>
+                                    <textarea class="form-control" placeholder="Pesan" name="messageKontak" required></textarea>
                                 </p>
-                                <button class="btn btn-info" type="submit">Send</button>
+                                <button class="btn btn-info" type="submit">Kirim</button>
                             </form>
                         </div>
                     </div>

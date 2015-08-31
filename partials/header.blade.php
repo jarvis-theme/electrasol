@@ -14,7 +14,9 @@
                                 <input type="text" placeholder="Search" name="search" required />
                             </form>
                         </div>
-                        {{shopping_cart()}}
+                        <div id="shoppingcartplace">
+                            {{shopping_cart()}}
+                        </div>
                     </div>
                 </div>
             </div>
