@@ -5,7 +5,13 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="logo pull-left">
-                            <a href="{{url('home')}}"><img src="{{url(logo_image_url())}}" style="margin-top: -50px;" /></a>
+                            @if(@getimagesize(url(logo_image_url())))
+                            <a href="{{ url('home') }}">
+                                <img src="{{url(logo_image_url())}}" style="margin-top: -50px;" /></a>
+                            </a>
+                            @else
+                            <a href="{{url('home')}}"><h1 class="text-logo">{{ shortText(Theme::place('title'),26) }}</h1></a>
+                            @endif
                         </div>
                     </div>
                     <div class="col-md-8" align="right">
