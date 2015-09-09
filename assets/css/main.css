@@ -348,7 +348,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#94918a', end
 }
 
 .search_box input {
-    background: #a70000 url("../images/home/searchicon.png") no-repeat scroll 185px center;
+    background: #a70000 url("../images/searchicon.png") no-repeat scroll 175px center;
     border: medium none;
     color: #b2b2b2;
     font-family: "roboto";
@@ -362,14 +362,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#94918a', end
 
 
 /*  Dropdown menu*/
-
 .navbar-header 
 .navbar-toggle .icon-bar {
     background-color: #fff;
 }
 
-
-.nav.navbar-nav > li:hover > ul.sub-menu{
+nav.navbar-nav > li:hover > ul.sub-menu{
   display: block;
   -webkit-animation: fadeInUp 400ms;
   -moz-animation: fadeInUp 400ms;
