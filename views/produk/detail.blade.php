@@ -46,13 +46,13 @@
                             </div>
                             
                             <div class="best-seller">
-                                <div class="title"><h2>Best Selling</h2></div>
+                                <div class="title"><h2>Produk Terlaris</h2></div>
                                 <ul class="block-content">
                                     @foreach(best_seller() as $best)
                                     <li>
                                         <a href="{{product_url($best)}}">
                                             <div class="img-block">
-                                                <img width="70" height="70" src="{{url(product_image_url($best->gambar1,'thumb'))}}">
+                                                <img width="70" height="70" src="{{url(product_image_url($best->gambar1,'thumb'))}}" alt="{{$best->nama}}">
                                             </div>
                                             <p class="product-name">{{short_description($best->nama,20)}}</p>
                                             <p class="price">{{price($best->hargaJual)}}</p>
@@ -62,17 +62,17 @@
                                     @endforeach
                                 </ul>
                                 <div class="btn-more">
-                                    <a href="{{url('produk')}}">view more</a>
+                                    <a href="{{url('produk')}}">Lihat Semua</a>
                                 </div>
                             </div>
 
                             <div class="latest-news">
-                                <div class="title"><h2>Latest News</h2></div>
+                                <div class="title"><h2>Artikel Terbaru</h2></div>
                                 <ul class="block-content">
                                     @foreach(list_blog() as $blog)
                                     <li>
                                         <h5 class="title-news">{{short_description($blog->judul,30)}}</h5>
-                                        <p class="desc">{{short_description($blog->isi,46)}} <a href="{{blog_url($blog)}}"><span>read more</span></a></p> 
+                                        <p class="desc">{{short_description($blog->isi,46)}} <a href="{{blog_url($blog)}}"><span>selengkapnya</span></a></p> 
                                         <p class="date">{{date("F d, Y", strtotime($blog->created_at))}}</p>
                                     </li>
                                     @endforeach
@@ -89,7 +89,7 @@
                                 <div class="col-md-6 detail">
                                     <div class="row">
                                         <div class="view-product">
-                                            <img class="img-responsive" src="{{url(product_image_url($produk->gambar1,'large'))}}" style="width:100%" />
+                                            <img class="img-responsive" src="{{url(product_image_url($produk->gambar1,'large'))}}" alt="{{$produk->nama}}" />
                                             <h3><a class="zoom fancybox" href="{{url(product_image_url($produk->gambar1,'large'))}}" title="{{$produk->nama}}"><i class="fa fa-search"></i></a></h3>
                                         </div>
                                         <div id="similar-product" class="carousel slide" data-ride="carousel">
@@ -97,17 +97,17 @@
                                                 <div class="item active col-xs-12">
                                                     @if($produk->gambar2 != '')
                                                     <div class="col-xs-4">
-                                                        <a class="zoom fancybox" href="{{url(product_image_url($produk->gambar2,'large'))}}" title="{{$produk->nama}}"><img class="img-responsive" src="{{url(product_image_url($produk->gambar2,'thumb'))}}"></a>
+                                                        <a class="zoom fancybox" href="{{url(product_image_url($produk->gambar2,'large'))}}" title="{{$produk->nama}}"><img class="img-responsive" src="{{url(product_image_url($produk->gambar2,'thumb'))}}" alt="Thumbnail 1"></a>
                                                     </div>
                                                     @endif
                                                     @if($produk->gambar3 != '')
                                                     <div class="col-xs-4">
-                                                        <a class="zoom fancybox" href="{{url(product_image_url($produk->gambar3,'large'))}}" title="{{$produk->nama}}"><img class="img-responsive" src="{{url(product_image_url($produk->gambar3,'thumb'))}}"></a>
+                                                        <a class="zoom fancybox" href="{{url(product_image_url($produk->gambar3,'large'))}}" title="{{$produk->nama}}"><img class="img-responsive" src="{{url(product_image_url($produk->gambar3,'thumb'))}}" alt="Thumbnail 2"></a>
                                                     </div>
                                                     @endif
                                                     @if($produk->gambar4 != '')
                                                     <div class="col-xs-4">
-                                                        <a class="zoom fancybox" href="{{url(product_image_url($produk->gambar4,'large'))}}" title="{{$produk->nama}}"><img class="img-responsive" src="{{url(product_image_url($produk->gambar4,'thumb'))}}"></a>
+                                                        <a class="zoom fancybox" href="{{url(product_image_url($produk->gambar4,'large'))}}" title="{{$produk->nama}}"><img class="img-responsive" src="{{url(product_image_url($produk->gambar4,'thumb'))}}" alt="Thumbnail 3"></a>
                                                     </div>
                                                     @endif
                                                 </div>
@@ -123,9 +123,7 @@
                                             <h4 class="price"><del>{{price($produk->hargaCoret)}}</del></h4>&nbsp;
                                             @endif
                                             <h3 class="price">{{price($produk->hargaJual)}}</h3>
-                                            <div class="sosmed">
-                                                {{sosialShare(url(product_url($produk)))}}
-                                            </div>
+                                            <div class="sosmed">{{sosialShare(url(product_url($produk)))}}</div>
                                             <p>Product Description :</p>
                                             <p class="desc">{{$produk->deskripsi}}</p>
                                         </div>
@@ -173,7 +171,7 @@
                                     <span class="instock">Available, Stock <span class="ttl-stock">{{$produk->stok}} item</span></span>
                                     @else
                                     <span class="fa-stack fa-1x">
-                                        <i style="color: #d9534f;" class="fa fa-circle fa-stack-2x"></i>
+                                        <i id="nostock" class="fa fa-circle fa-stack-2x"></i>
                                         <i class="fa fa-times fa-stack-1x fa-inverse"></i>
                                     </span>
                                     Out of Stock
@@ -188,16 +186,17 @@
                         <div class="clearfix"></div>
                         @if(count(other_product($produk)) > 0)
                         <div class="features_items detail">
+                            <div class="container"><h2>Produk Lainnya</h2></div>
                             @foreach(other_product($produk) as $other)
                             <div class="col-md-4" align="center">
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo">
-                                            <img class="img-responsive thumb" src="{{url(product_image_url($other->gambar1,'medium'))}}" />
+                                            <img class="img-responsive thumb" src="{{url(product_image_url($other->gambar1,'medium'))}}" alt="{{$other->nama}}" title="{{$other->nama}}" />
                                             <p>{{short_description($other->nama,20)}}</p>
                                             <h2>{{price($other->hargaJual)}}</h2>
                                             <div class="btn-org">
-                                                <a class="orange" href="{{product_url($other)}}">Read more</a>
+                                                <a class="orange" href="{{product_url($other)}}">Detail</a>
                                             </div>
                                         </div>
                                     </div>
@@ -220,24 +219,33 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="col-md-4">
-                            <p>Metode Pembayaran via Bank :</p>
+                            <p>Metode Pembayaran :</p>
                         </div>
                         <div class="col-md-8">
-                            @foreach(list_banks() as $value)
-                            <div class="col-md-2">
-                                <img class="img-responsive img-payment" src="{{bank_logo($value)}}" />
-                            </div>
-                            @endforeach
-                            @foreach(list_payments() as $pay)
-                                @if($pay->nama == 'ipaymu' && $pay->aktif == 1)
+                            @if(list_banks()->count() > 0)
+                                @foreach(list_banks() as $value)
                                 <div class="col-md-2">
-                                    <img class="img-responsive img-payment" src="{{url('img/bank/ipaymu.jpg')}}" />
+                                    <img class="img-responsive img-payment" src="{{bank_logo($value)}}" alt="{{$value->bankdefault->nama}}" title="Payment" />
                                 </div>
-                                @endif
-                            @endforeach
+                                @endforeach
+                            @endif
+                            @if(list_payments()->count() > 0)
+                                @foreach(list_payments() as $pay)
+                                    @if($pay->nama == 'ipaymu' && $pay->aktif == 1)
+                                    <div class="col-md-2">
+                                        <img class="img-responsive img-payment" src="{{url('img/bank/ipaymu.jpg')}}" alt="Ipaymu" title="Payment" />
+                                    </div>
+                                    @endif
+                                    @if($pay->nama == 'bitcoin' && $pay->aktif == 1)
+                                    <div class="col-md-2">
+                                        <img class="img-responsive img-payment" src="{{url('img/bitcoin.png')}}" alt="Bitcoin" title="Payment" />
+                                    </div>
+                                    @endif
+                                @endforeach
+                            @endif
                             @if(count(list_dokus()) > 0 && list_dokus()->status == 1)
                             <div class="col-md-2">
-                                <img class="img-responsive img-payment" src="{{url('img/bank/doku.jpg')}}" />
+                                <img class="img-responsive img-payment" src="{{url('img/bank/doku.jpg')}}" alt="Doku Myshortcart" title="Payment" />
                             </div>
                             @endif
                         </div>
@@ -253,7 +261,7 @@
                         <div class="col-md-12">
                             @foreach(vertical_banner() as $banner)
                             <div class="col-md-4" align="center">
-                                <img class="img-responsive" src="{{url(banner_image_url($banner->gambar))}}" />
+                                <img class="img-responsive" src="{{url(banner_image_url($banner->gambar))}}" alt="Info Promo" />
                             </div>
                             @endforeach
                         </div>

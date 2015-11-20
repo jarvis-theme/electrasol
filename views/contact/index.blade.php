@@ -46,7 +46,7 @@
                             </div>
                             
                             <div class="best-seller">
-                                <div class="title"><h2>Best Selling</h2></div>
+                                <div class="title"><h2>Produk Terlaris</h2></div>
                                 <ul class="block-content">
                                     @foreach(best_seller() as $best)
                                     <li>
@@ -62,17 +62,17 @@
                                     @endforeach
                                 </ul>
                                 <div class="btn-more">
-                                    <a href="{{url('produk')}}">view more</a>
+                                    <a href="{{url('produk')}}">Lihat Semua</a>
                                 </div>
                             </div>
 
                             <div class="latest-news">
-                                <div class="title"><h2>Latest News</h2></div>
+                                <div class="title"><h2>Artikel Terbaru</h2></div>
                                 <ul class="block-content">
                                     @foreach(list_blog() as $blog)
                                     <li>
                                         <h5 class="title-news">{{short_description($blog->judul,30)}}</h5>
-                                        <p class="desc">{{short_description($blog->isi,46)}} <a href="{{blog_url($blog)}}"><span>read more</span></a></p> 
+                                        <p class="desc">{{short_description($blog->isi,46)}} <a href="{{blog_url($blog)}}"><span>selengkapnya</span></a></p> 
                                         <p class="date">{{date("F d, Y", strtotime($blog->created_at))}}</p>
                                     </li>
                                     @endforeach
@@ -87,9 +87,9 @@
                             <h2>Contact Us</h2>
                             <div class="maps">
                                 @if($kontak->lat!='0' || $kontak->lng!='0')
-                                    <iframe style="float:right;width:100%" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q={{ $kontak->lat.','.$kontak->lng }}&amp;aq=&amp;sll={{ $kontak->lat.','.$kontak->lng }}&amp;sspn=0.006849,0.009892&amp;ie=UTF8&amp;t=m&amp;z=14&amp;output=embed"></iframe><br />
+                                    <iframe class="maps" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q={{ $kontak->lat.','.$kontak->lng }}&amp;aq=&amp;sll={{ $kontak->lat.','.$kontak->lng }}&amp;sspn=0.006849,0.009892&amp;ie=UTF8&amp;t=m&amp;z=14&amp;output=embed"></iframe><br />
                                 @else
-                                    <iframe style="float:right;width:100%" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q={{ $kontak->alamat }}&amp;aq=0&amp;oq=gegerkalong+hil&amp;sspn=0.006849,0.009892&amp;ie=UTF8&amp;hq=&amp;hnear={{ $kontak->alamat }}&amp;t=m&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe><br />
+                                    <iframe class="maps" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q={{ $kontak->alamat }}&amp;aq=0&amp;oq=gegerkalong+hil&amp;sspn=0.006849,0.009892&amp;ie=UTF8&amp;hq=&amp;hnear={{ $kontak->alamat }}&amp;t=m&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe><br />
                                 @endif
                             </div>
                             <div class="contact-desc">
@@ -99,7 +99,7 @@
                                 <p><strong>Telepon : </strong> {{$kontak->telepon}}</p>
                                 @endif
                                 @if($kontak->hp != '')
-                                <p><strong>SMS : </strong> {{$kontak->hp}}</p>
+                                <p><strong>HP : </strong> {{$kontak->hp}}</p>
                                 @endif
                                 @if($kontak->bbm != '')
                                 <p><strong>BBM : </strong> {{$kontak->bb}}</p>
@@ -113,7 +113,7 @@
                                     <input class="form-control" placeholder="Nama" name="namaKontak" type="text" required>
                                 </p>
                                 <p class="form-group">
-                                    <input class="form-control" placeholder="Email Address" name="emailKontak" type="text" required>
+                                    <input class="form-control" placeholder="Email anda" name="emailKontak" type="text" required>
                                 </p>
                                 <p class="form-group">
                                     <textarea class="form-control" placeholder="Pesan" name="messageKontak" required></textarea>
@@ -135,24 +135,33 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="col-md-4">
-                            <p>Metode Pembayaran via Bank :</p>
+                            <p>Metode Pembayaran :</p>
                         </div>
                         <div class="col-md-8">
-                            @foreach(list_banks() as $value)
-                            <div class="col-md-2">
-                                <img class="img-responsive img-payment" src="{{bank_logo($value)}}" />
-                            </div>
-                            @endforeach
-                            @foreach(list_payments() as $pay)
-                                @if($pay->nama == 'ipaymu' && $pay->aktif == 1)
+                            @if(list_banks()->count() > 0)
+                                @foreach(list_banks() as $value)
                                 <div class="col-md-2">
-                                    <img class="img-responsive img-payment" src="{{url('img/bank/ipaymu.jpg')}}" />
+                                    <img class="img-responsive img-payment" src="{{bank_logo($value)}}" alt="{{$value->bankdefault->nama}}" title="Payment" />
                                 </div>
-                                @endif
-                            @endforeach
+                                @endforeach
+                            @endif
+                            @if(list_payments()->count() > 0)
+                                @foreach(list_payments() as $pay)
+                                    @if($pay->nama == 'ipaymu' && $pay->aktif == 1)
+                                    <div class="col-md-2">
+                                        <img class="img-responsive img-payment" src="{{url('img/bank/ipaymu.jpg')}}" alt="Ipaymu" title="Payment" />
+                                    </div>
+                                    @endif
+                                    @if($pay->nama == 'bitcoin' && $pay->aktif == 1)
+                                    <div class="col-md-2">
+                                        <img class="img-responsive img-payment" src="{{url('img/bank/ipaymu.jpg')}}" alt="Ipaymu" title="Payment" />
+                                    </div>
+                                    @endif
+                                @endforeach
+                            @endif
                             @if(count(list_dokus()) > 0 && list_dokus()->status == 1)
                             <div class="col-md-2">
-                                <img class="img-responsive img-payment" src="{{url('img/bank/doku.jpg')}}" />
+                                <img class="img-responsive img-payment" src="{{url('img/bitcoin.png')}}" alt="Bitcoin" title="Payment" />
                             </div>
                             @endif
                         </div>
@@ -165,7 +174,7 @@
                         <div class="col-md-12">
                             @foreach(vertical_banner() as $banner)
                             <div class="col-md-4" align="center">
-                                <img class="img-responsive" src="{{url(banner_image_url($banner->gambar))}}" />
+                                <img class="img-responsive" src="{{url(banner_image_url($banner->gambar))}}" alt="Info Promo" />
                             </div>
                             @endforeach
                         </div>

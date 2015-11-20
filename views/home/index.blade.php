@@ -4,7 +4,7 @@
             <div class="title-features">
                 <div class="row">
                     <div class="col-md-12">
-                        <h3>ALL PRODUCTS</h3>
+                        <h3>KOLEKSI PRODUK</h3>
                     </div>
                     <!-- <div class="col-md-6 right">
                         <span>View as : </span>&nbsp;<a href=""><img class="img-responsive list" src="{{url(dirTemaToko().'electrasol/assets/images/grid-short.png')}}" />&nbsp;<img class="img-responsive list" src="{{url(dirTemaToko().'electrasol/assets/images/list-short.png')}}" /></a>
@@ -18,7 +18,7 @@
                         <div class="product-image-wrapper">
                             <div class="single-products">
                                 <div class="productinfo">
-                                    <img class="img-responsive" src="{{url(product_image_url($home->gambar1,'medium'))}}" />
+                                    <img class="img-responsive" src="{{url(product_image_url($home->gambar1,'medium'))}}" alt="{{$home->nama}}" />
                                     <p>{{short_description($home->nama,20)}}</p>
                                     <h2>{{price($home->hargaJual)}}</h2>
                                     <div class="btn-group col-xs-12 col-sm-12" role="group" aria-label="Default button group">
@@ -37,24 +37,33 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="col-md-4">
-                            <p>Metode Pembayaran via Bank :</p>
+                            <p>Metode Pembayaran :</p>
                         </div>
                         <div class="col-md-8">
-                            @foreach(list_banks() as $value)
-                            <div class="col-md-2">
-                                <img class="img-responsive img-payment" src="{{bank_logo($value)}}" />
-                            </div>
-                            @endforeach
-                            @foreach(list_payments() as $pay)
-                                @if($pay->nama == 'ipaymu' && $pay->aktif == 1)
+                            @if(list_banks()->count() > 0)
+                                @foreach(list_banks() as $value)
                                 <div class="col-md-2">
-                                    <img class="img-responsive img-payment" src="{{url('img/bank/ipaymu.jpg')}}" />
+                                    <img class="img-responsive img-payment" src="{{bank_logo($value)}}" alt="{{$value->bankdefault->nama}}" title="Payment" />
                                 </div>
-                                @endif
-                            @endforeach
+                                @endforeach
+                            @endif
+                            @if(list_payments()->count() > 0)
+                                @foreach(list_payments() as $pay)
+                                    @if($pay->nama == 'ipaymu' && $pay->aktif == 1)
+                                    <div class="col-md-2">
+                                        <img class="img-responsive img-payment" src="{{url('img/bank/ipaymu.jpg')}}" alt="Ipaymu" title="Payment" />
+                                    </div>
+                                    @endif
+                                    @if($pay->nama == 'bitcoin' && $pay->aktif == 1)
+                                    <div class="col-md-2">
+                                        <img class="img-responsive img-payment" src="{{url('img/bitcoin.png')}}" alt="Bitcoin" title="Payment" />
+                                    </div>
+                                    @endif
+                                @endforeach
+                            @endif
                             @if(count(list_dokus()) > 0 && list_dokus()->status == 1)
                             <div class="col-md-2">
-                                <img class="img-responsive img-payment" src="{{url('img/bank/doku.jpg')}}" />
+                                <img class="img-responsive img-payment" src="{{url('img/bank/doku.jpg')}}" alt="Doku Myshortcart" title="Payment" />
                             </div>
                             @endif
                         </div>
@@ -68,7 +77,7 @@
                         <div class="col-md-12">
                             @foreach(vertical_banner() as $banner)
                             <div class="col-md-4" align="center">
-                                <img class="img-responsive" src="{{url(banner_image_url($banner->gambar))}}" />
+                                <img class="img-responsive" src="{{url(banner_image_url($banner->gambar))}}" alt="Info Promo" />
                             </div>
                             @endforeach
                         </div>

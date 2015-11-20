@@ -13,7 +13,7 @@
                         <h2>Lupa Password</h2><hr><br>
                         <form action="{{url('member/forgetpassword')}}" method="post">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Email" name="recoveryEmail" required>
+                                <input type="text" class="form-control" placeholder="Masukkan mail anda" name="recoveryEmail" required="required">
                                 <span class="input-group-btn">
                                     <button class="btn btn-warning" type="submit">Reset Password</button>
                                 </span>
@@ -43,24 +43,33 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="col-md-4">
-                            <p>Metode Pembayaran via Bank :</p>
+                            <p>Metode Pembayaran :</p>
                         </div>
                         <div class="col-md-8">
-                            @foreach(list_banks() as $value)
-                            <div class="col-md-2">
-                                <img class="img-responsive img-payment" src="{{bank_logo($value)}}" />
-                            </div>
-                            @endforeach
-                            @foreach(list_payments() as $pay)
-                                @if($pay->nama == 'ipaymu' && $pay->aktif == 1)
+                            @if(list_banks()->count() > 0)
+                                @foreach(list_banks() as $value)
                                 <div class="col-md-2">
-                                    <img class="img-responsive img-payment" src="{{url('img/bank/ipaymu.jpg')}}" />
+                                    <img class="img-responsive img-payment" src="{{bank_logo($value)}}" alt="{{$value->bankdefault->nama}}" title="Payment" />
                                 </div>
-                                @endif
-                            @endforeach
+                                @endforeach
+                            @endif
+                            @if(list_payments()->count() > 0)
+                                @foreach(list_payments() as $pay)
+                                    @if($pay->nama == 'ipaymu' && $pay->aktif == 1)
+                                    <div class="col-md-2">
+                                        <img class="img-responsive img-payment" src="{{url('img/bank/ipaymu.jpg')}}" alt="Ipaymu" title="Payment" />
+                                    </div>
+                                    @endif
+                                    @if($pay->nama == 'bitcoin' && $pay->aktif == 1)
+                                    <div class="col-md-2">
+                                        <img class="img-responsive img-payment" src="{{url('img/bitcoin.png')}}" alt="Bitcoin" title="Payment" />
+                                    </div>
+                                    @endif
+                                @endforeach
+                            @endif
                             @if(count(list_dokus()) > 0 && list_dokus()->status == 1)
                             <div class="col-md-2">
-                                <img class="img-responsive img-payment" src="{{url('img/bank/doku.jpg')}}" />
+                                <img class="img-responsive img-payment" src="{{url('img/bank/doku.jpg')}}" alt="Doku Myshortcart" title="Payment" />
                             </div>
                             @endif
                         </div>
@@ -73,7 +82,7 @@
                         <div class="col-md-12">
                             @foreach(vertical_banner() as $banner)
                             <div class="col-md-4" align="center">
-                                <img class="img-responsive" src="{{url(banner_image_url($banner->gambar))}}" />
+                                <img class="img-responsive" src="{{url(banner_image_url($banner->gambar))}}" alt="Info Promo" />
                             </div>
                             @endforeach
                         </div>

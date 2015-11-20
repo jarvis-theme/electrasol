@@ -46,13 +46,13 @@
                             </div>
                             
                             <div class="best-seller">
-                                <div class="title"><h2>Best Selling</h2></div>
+                                <div class="title"><h2>Produk Terlaris</h2></div>
                                 <ul class="block-content">
                                     @foreach(best_seller() as $best)
                                     <li>
                                         <a href="{{product_url($best)}}">
                                             <div class="img-block">
-                                                <img width="70" height="70" src="{{url(product_image_url($best->gambar1))}}">
+                                                <img width="70" height="70" src="{{url(product_image_url($best->gambar1))}}" alt="{{$best->nama}}">
                                             </div>
                                             <p class="product-name">{{short_description($best->nama,20)}}</p>
                                             <p class="price">{{price($best->hargaJual)}}</p>
@@ -62,17 +62,17 @@
                                     @endforeach
                                 </ul>
                                 <div class="btn-more">
-                                    <a href="{{url('produk')}}">view more</a>
+                                    <a href="{{url('produk')}}">Lihat Semua</a>
                                 </div>
                             </div>
 
                             <div class="latest-news">
-                                <div class="title"><h2>Latest News</h2></div>
+                                <div class="title"><h2>Artikel Terbaru</h2></div>
                                 <ul class="block-content">
                                     @foreach(list_blog() as $blog)
                                     <li>
                                         <h5 class="title-news">{{short_description($blog->judul,30)}}</h5>
-                                        <p class="desc">{{short_description($blog->isi,46)}} <a href="{{blog_url($blog)}}"><span>read more</span></a></p> 
+                                        <p class="desc">{{short_description($blog->isi,46)}} <a href="{{blog_url($blog)}}"><span>selengkapnya</span></a></p> 
                                         <p class="date">{{date("F d, Y", strtotime($blog->created_at))}}</p>
                                     </li>
                                     @endforeach
@@ -90,7 +90,7 @@
                                 <div class="blockquotes">
                                 <blockquote>
                                     {{short_description($value->isi,400)}}
-                                    <p style="text-align: right; font-style:italic; margin-top: 10px;">~ {{$value->nama}}</p>
+                                    <p id="testi">~ {{$value->nama}}</p>
                                 </blockquote>
                                 </div>
                             </div>
@@ -100,10 +100,10 @@
                             <form class="col-lg-12 col-xs-12 contact-form" action="{{url('testimoni')}}" method="post">
                                 <h3>Kirim Testimonial</h3>
                                 <p class="form-group">
-                                    <input class="form-control" placeholder="Nama" type="text" name="nama" required>
+                                    <input class="form-control" placeholder="Nama" type="text" name="nama" required="required">
                                 </p>
                                 <p class="form-group">
-                                    <textarea class="form-control" placeholder="Pesan" name="testimonial"  required></textarea>
+                                    <textarea class="form-control" placeholder="Testimonial" name="testimonial" required="required"></textarea>
                                 </p>
                                 <button class="btn btn-info" type="submit">Kirim</button>
                             </form>

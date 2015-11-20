@@ -9,7 +9,6 @@
 		{{ Theme::partial('header') }} 
 		{{ Theme::place('content') }}  
 		{{ Theme::partial('footer') }}  
-		
 		{{ Theme::partial('defaultjs') }}
 		{{ Theme::partial('analytic') }} 
 	</body>

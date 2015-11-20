@@ -16,7 +16,9 @@
 	                    @else
 	                    <div class="item active">
 	                    @endif
-	                        <img src="{{url(slide_image_url($val->gambar))}}" width="100%">
+            				<a href="{{$val->text=='' ? '#' : $val->text}}">
+	                        	<img src="{{url(slide_image_url($val->gambar))}}" width="100%" alt="Info Promo">
+                        	</a>
 	                    </div>
 						{{-- */ $i += 1; /* --}}
                     @endforeach
@@ -25,6 +27,5 @@
 	        </div>
 	    </div>
 	</div>
-	<div id="push">
-	</div>
+	<div id="push"></div>
 </section>

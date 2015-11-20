@@ -9,9 +9,7 @@
 		{{ Theme::partial('header') }} 
         {{ Theme::partial('slider') }}  
 		{{ Theme::place('content') }}  
-				
 		{{ Theme::partial('footer') }}  
-		
 		{{ Theme::partial('defaultjs') }}
 		{{ Theme::partial('analytic') }} 
 	</body>

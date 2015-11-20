@@ -34,10 +34,10 @@
                                                 <li>
                                                     <a href="{{category_url($submenu)}}">{{$submenu->nama}}</a>
                                                     @if($submenu->anak->count() != 0)
-                                                    <ul style="padding-left: 20px;">
+                                                    <ul class="child1">
                                                         @foreach($submenu->anak as $submenu2)
                                                         @if($submenu2->parent == $submenu->id)
-                                                        <li style="padding-top: 10px;">
+                                                        <li class="child2">
                                                             <a href="{{category_url($submenu2)}}">{{$submenu2->nama}}</a>
                                                         </li>
                                                         @endif
@@ -57,13 +57,13 @@
                             </div>
                             
                             <div class="best-seller">
-                                <div class="title"><h2>Best Selling</h2></div>
+                                <div class="title"><h2>Produk Terlaris</h2></div>
                                 <ul class="block-content">
                                     @foreach(best_seller() as $best)
                                     <li>
                                         <a href="{{product_url($best)}}">
                                             <div class="img-block">
-                                                <img width="70" height="70" src="{{url(product_image_url($best->gambar1,'thumb'))}}">
+                                                <img width="70" height="70" src="{{url(product_image_url($best->gambar1,'thumb'))}}" alt="{{$best->nama}}">
                                             </div>
                                             <p class="product-name">{{short_description($best->nama,20)}}</p>
                                             <p class="price">{{price($best->hargaJual)}}</p>
@@ -73,17 +73,17 @@
                                     @endforeach
                                 </ul>
                                 <div class="btn-more">
-                                    <a href="{{url('produk')}}">view more</a>
+                                    <a href="{{url('produk')}}">Lihat Semua</a>
                                 </div>
                             </div>
 
                             <div class="latest-news">
-                                <div class="title"><h2>Latest News</h2></div>
+                                <div class="title"><h2>Artikel Terbaru</h2></div>
                                 <ul class="block-content">
                                     @foreach(list_blog() as $blog)
                                     <li>
                                         <h5 class="title-news">{{short_description($blog->judul,30)}}</h5>
-                                        <p class="desc">{{short_description($blog->isi,46)}} <a href="{{blog_url($blog)}}"><span>read more</span></a></p> 
+                                        <p class="desc">{{short_description($blog->isi,46)}} <a href="{{blog_url($blog)}}"><span>selengkapnya</span></a></p> 
                                         <p class="date">{{date("F d, Y", strtotime($blog->created_at))}}</p>
                                     </li>
                                     @endforeach
@@ -101,11 +101,11 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo">
-                                            <img class="img-responsive thumb" src="{{url(product_image_url($products->gambar1,'medium'))}}" />
+                                            <img class="img-responsive thumb" src="{{url(product_image_url($products->gambar1,'medium'))}}" alt="{{$products->nama}}" />
                                             <p>{{short_description($products->nama,25)}}</p>
                                             <h2>{{price($products->hargaJual)}}</h2>
                                             <div class="btn-group col-xs-12 col-sm-12" role="group" aria-label="Default button group">
-                                                <a type="button" class="btn btn-default col-xs-3 col-sm-3" href="{{product_url($products)}}" style="background-color:#ffb900;color:#fff;"><i class="fa fa-eye"></i></a>
+                                                <a type="button" class="btn btn-default col-xs-3 col-sm-3" href="{{product_url($products)}}" id="idxproduct"><i class="fa fa-eye"></i></a>
                                                 <a type="button" class="btn btn-default col-xs-9 col-sm-9" href="{{product_url($products)}}">Detail</a>
                                             </div>
                                         </div>
@@ -126,24 +126,33 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="col-md-4">
-                                        <p>Metode Pembayaran via Bank :</p>
+                                        <p>Metode Pembayaran :</p>
                                     </div>
                                     <div class="col-md-8">
-                                        @foreach(list_banks() as $value)
-                                        <div class="col-md-2">
-                                            <img class="img-responsive img-payment" src="{{bank_logo($value)}}" />
-                                        </div>
-                                        @endforeach
-                                        @foreach(list_payments() as $pay)
-                                            @if($pay->nama == 'ipaymu' && $pay->aktif == 1)
+                                        @if(list_banks()->count() > 0)
+                                            @foreach(list_banks() as $value)
                                             <div class="col-md-2">
-                                                <img class="img-responsive img-payment" src="{{url('img/bank/ipaymu.jpg')}}" />
+                                                <img class="img-responsive img-payment" src="{{bank_logo($value)}}" alt="{{$value->bankdefault->nama}}" title="Payment" />
                                             </div>
-                                            @endif
-                                        @endforeach
+                                            @endforeach
+                                        @endif
+                                        @if(list_payments()->count() > 0)
+                                            @foreach(list_payments() as $pay)
+                                                @if($pay->nama == 'ipaymu' && $pay->aktif == 1)
+                                                <div class="col-md-2">
+                                                    <img class="img-responsive img-payment" src="{{url('img/bank/ipaymu.jpg')}}" alt="Ipaymu" title="Payment" />
+                                                </div>
+                                                @endif
+                                                @if($pay->nama == 'bitcoin' && $pay->aktif == 1)
+                                                <div class="col-md-2">
+                                                    <img class="img-responsive img-payment" src="{{url('img/bitcoin.png')}}" alt="Bitcoin" title="Payment" />
+                                                </div>
+                                                @endif
+                                            @endforeach
+                                        @endif
                                         @if(count(list_dokus()) > 0 && list_dokus()->status == 1)
                                         <div class="col-md-2">
-                                            <img class="img-responsive img-payment" src="{{url('img/bank/doku.jpg')}}" />
+                                            <img class="img-responsive img-payment" src="{{url('img/bank/doku.jpg')}}" alt="Doku Myshortcart" title="Payment" />
                                         </div>
                                         @endif
                                     </div>
@@ -156,7 +165,7 @@
                                     <div class="col-md-12">
                                         @foreach(vertical_banner() as $banner)
                                         <div class="col-md-4" align="center">
-                                            <img class="img-responsive" src="{{url(banner_image_url($banner->gambar))}}" />
+                                            <img class="img-responsive" src="{{url(banner_image_url($banner->gambar))}}" alt="Info Promo" />
                                         </div>
                                         @endforeach
                                     </div>

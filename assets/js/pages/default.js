@@ -1,4 +1,4 @@
-define(['jquery','fancybox','bootstrap','scroll'], function($,fancybox)
+define(['fancybox','scroll'], function(fancybox)
 {
 	return new function(){
 		var self = this;

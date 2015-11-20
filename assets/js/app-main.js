@@ -2,33 +2,30 @@ var dirTema = document.querySelector("meta[name='theme_path']").getAttribute('co
 
 require.config({
 	baseUrl: '/',
-    urlArgs: "v=001",
-	waitSeconds: 120,
+    urlArgs: "v=003",
+	waitSeconds: 30,
 	shim: {
 		"bootstrap"	: {
-			deps: ['jquery'],
+			deps: ['jquery']
 		},
 		'jq_ui' : {
-			deps : ['jquery'],
-		},
-		"noty_util" : {
-			deps : ['jquery','noty'],
+			deps : ['jquery']
 		},
 		"noty" : {
-			deps : ['jquery'],
+			deps : ['jquery']
 		},
 		"cart" : {
-			deps : ['jquery'],
+			deps : ['jquery']
 		},
 		'fancybox' : {
 			deps : ['jquery']
 		},
 		"pretty_photo" : {
-			deps : ['jquery'],
+			deps : ['jquery']
 		},
 		"scroll" : {
-			deps : ['jquery'],
-		},
+			deps : ['jquery']
+		}
 	},
 
 	paths: {
@@ -37,7 +34,6 @@ require.config({
 		cart			: 'js/shop_cart',
 		jq_ui			: 'js/jquery-ui',
 		noty			: 'js/jquery.noty',
-		noty_util		: 'js/utils/noty',
 		bootstrap		: '//maxcdn.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min',
 		fancybox		: dirTema+'/assets/js/lib/jquery.fancybox.pack',
 		pretty_photo	: dirTema+'/assets/js/lib/jquery.prettyPhoto',
@@ -53,14 +49,13 @@ require.config({
 });
 require([
 	'jquery',
+	'bootstrap',
 	'router',
 	'cart',
-	'noty_util',
 	'main'
-], function($,router,cart,noty,main)
+], function($,b,router,cart,main)
 {
 	router.run();
-	noty.run();
 	cart.run();
 	main.run();
 });

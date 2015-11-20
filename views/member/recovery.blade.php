@@ -7,19 +7,18 @@
 					<div class="form-group">
 						<label class="col-lg-3 control-label">Password Baru</label>
 						<div class="col-lg-8">
-							<input class="form-control" type="password" name="password" placeholder="password baru" required>
+							<input class="form-control" type="password" name="password" placeholder="Password baru" required="required">
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-lg-3 control-label">Konfirmasi Password Baru</label>
 						<div class="col-lg-8">
-							<input class="form-control" type="password" name="password_confirmation" placeholder="konfirmasi password baru" required>
+							<input class="form-control" type="password" name="password_confirmation" placeholder="Konfirmasi password baru" required="required">
 						</div>
 					</div>
-		   
 					<div class="form-group">
 						<div class="col-lg-offset-3 col-lg-8">
-							<button type="submit" class="btn btn-info">Update Password</button>
+							<button class="btn btn-info" type="submit">Update Password</button>
 						</div>
 					</div>
 				{{Form::close()}}
@@ -27,7 +26,7 @@
 			<div class="col-sm-4 col-sm-offset-1">
 				@foreach(vertical_banner() as $item)
 				<a href="{{url($item->url)}}">
-					<img src="{{url(banner_image_url($item->gambar))}}" />
+					<img src="{{url(banner_image_url($item->gambar))}}" alt="Info Promo" />
 				</a>
 				@endforeach
 			</div>

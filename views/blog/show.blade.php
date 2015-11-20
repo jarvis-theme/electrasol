@@ -46,16 +46,16 @@
                             </div>
                             
                             <div class="latest-news">
-                                <div class="title"><h2>Blog Category</h2></div>
+                                <div class="title"><h2>Kategori Blog</h2></div>
                                 <ul class="block-content">
                                     @foreach(list_blog_category() as $kat)
-                                    <span style="text-decoration: underline;"><a href="{{blog_category_url($kat)}}">{{$kat->nama}}</a></span>&nbsp;&nbsp;
+                                    <span class="underline"><a href="{{blog_category_url($kat)}}">{{$kat->nama}}</a></span>&nbsp;&nbsp;
                                     @endforeach
                                 </ul>
                             </div>
                             
                             <div class="best-seller">
-                                <div class="title"><h2>Best Selling</h2></div>
+                                <div class="title"><h2>Produk Terlaris</h2></div>
                                 <ul class="block-content">
                                     @foreach(best_seller() as $best)
                                     <li>
@@ -71,7 +71,7 @@
                                     @endforeach
                                 </ul>
                                 <div class="btn-more">
-                                    <a href="{{url('produk')}}">view more</a>
+                                    <a href="{{url('produk')}}">Lihat Semua</a>
                                 </div>
                             </div>
 
@@ -84,7 +84,7 @@
                             <h2>{{$detailblog->judul}}</h2>
                             <ul id="info-blog">
                                 <span class="date-post"><i class="fa fa-calendar"></i> {{waktuTgl($detailblog->created_at)}}</span>&nbsp;&nbsp;
-                                <span class="date-post"><i class="fa fa-tags"></i> <a href="{{blog_category_url(@$detailblog->kategori)}}" style="color:#333;">{{@$detailblog->kategori->nama}}</a></span>
+                                <span class="date-post"><i class="fa fa-tags"></i> <a href="{{blog_category_url(@$detailblog->kategori)}}" class="black">{{@$detailblog->kategori->nama}}</a></span>
                                 <span class="shareblog">{{sosialShare(blog_url($detailblog))}}</span>
                             </ul>
                             <p>{{$detailblog->isi}}</p>
@@ -99,7 +99,7 @@
 
                         @if(isset($next))
                             <div class="pull-right">
-                                <a style="float: right;" href="{{$next->slug}}">Selanjutnya &rarr;</a>
+                                <a class="pull-right" href="{{$next->slug}}">Selanjutnya &rarr;</a>
                             </div>
                         @else
                             <div class="pull-right"></div>
@@ -124,24 +124,33 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="col-md-4">
-                            <p>Metode Pembayaran via Bank :</p>
+                            <p>Metode Pembayaran :</p>
                         </div>
                         <div class="col-md-8">
-                            @foreach(list_banks() as $value)
-                            <div class="col-md-2">
-                                <img class="img-responsive img-payment" src="{{bank_logo($value)}}" />
-                            </div>
-                            @endforeach
-                            @foreach(list_payments() as $pay)
-                                @if($pay->nama == 'ipaymu' && $pay->aktif == 1)
+                            @if(list_banks()->count() > 0)
+                                @foreach(list_banks() as $value)
                                 <div class="col-md-2">
-                                    <img class="img-responsive img-payment" src="{{url('img/bank/ipaymu.jpg')}}" />
+                                    <img class="img-responsive img-payment" src="{{bank_logo($value)}}" alt="{{$value->bankdefault->nama}}" title="Payment" />
                                 </div>
-                                @endif
-                            @endforeach
+                                @endforeach
+                            @endif
+                            @if(list_payments()->count() > 0)
+                                @foreach(list_payments() as $pay)
+                                    @if($pay->nama == 'ipaymu' && $pay->aktif == 1)
+                                    <div class="col-md-2">
+                                        <img class="img-responsive img-payment" src="{{url('img/bank/ipaymu.jpg')}}" alt="Ipaymu" title="Payment" />
+                                    </div>
+                                    @endif
+                                    @if($pay->nama == 'bitcoin' && $pay->aktif == 1)
+                                    <div class="col-md-2">
+                                        <img class="img-responsive img-payment" src="{{url('img/bitcoin.png')}}" alt="Bitcoin" title="Payment" />
+                                    </div>
+                                    @endif
+                                @endforeach
+                            @endif
                             @if(count(list_dokus()) > 0 && list_dokus()->status == 1)
                             <div class="col-md-2">
-                                <img class="img-responsive img-payment" src="{{url('img/bank/doku.jpg')}}" />
+                                <img class="img-responsive img-payment" src="{{url('img/bank/doku.jpg')}}" alt="Doku Myshortcart" title="Payment" />
                             </div>
                             @endif
                         </div>
