@@ -16,7 +16,11 @@
 	                    @else
 	                    <div class="item active">
 	                    @endif
-            				<a href="{{$val->text=='' ? '#' : $val->text}}">
+	                    	@if($val->text == '')
+            				<a href="#">
+            				@else
+            				<a href="{{filter_link_url($val->text)}}" target="_blank">
+            				@endif
 	                        	<img src="{{url(slide_image_url($val->gambar))}}" width="100%" alt="Info Promo">
                         	</a>
 	                    </div>

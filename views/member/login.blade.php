@@ -70,6 +70,11 @@
                                         <img class="img-responsive img-payment" src="{{url('img/bitcoin.png')}}" alt="Bitcoin" title="Payment" />
                                     </div>
                                     @endif
+                                    @if($pay->nama == 'paypal' && $pay->aktif == 1)
+                                    <div class="col-md-2">
+                                        <img class="img-responsive img-payment" src="{{url('img/bank/paypal.png')}}" alt="Paypal" title="Payment" />
+                                    </div>
+                                    @endif
                                 @endforeach
                             @endif
                             @if(count(list_dokus()) > 0 && list_dokus()->status == 1)

@@ -17,7 +17,7 @@
                     <div class="col-xs-6 col-md-8" align="right">
                         <div class="search_box">
                             <form action="{{url('search')}}" method="post">
-                                <input class="inputsearch" type="text" placeholder="Cari" name="search" required />
+                                <input class="inputsearch" type="text" placeholder="Cari Produk" name="search" required />
                             </form>
                         </div>
                         <div id="shoppingcartplace">
@@ -83,7 +83,7 @@
                             <ul class="nav navbar-nav navbar-right">
                                 @if( is_login() )
                                 <li class="grey"><a class="login" href="{{url('logout')}}"><i class="fa fa-lock"></i> Logout</a></li>
-                                <li class="grey"><a class="signin" href="{{url('member/create')}}"><i class="fa fa-user"></i> {{user()->nama}}</a></li>
+                                <li class="grey"><a class="signin" href="{{url('member')}}"><i class="fa fa-user"></i> {{user()->nama}}</a></li>
                                 @else
                                 <li class="grey"><a class="login" href="{{url('member')}}"><i class="fa fa-lock"></i> Login</a></li>
                                 <li class="grey"><a class="signin" href="{{url('member/create')}}"><i class="fa fa-user"></i> Daftar</a></li>

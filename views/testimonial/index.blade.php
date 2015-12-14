@@ -3,7 +3,7 @@
     	<div class="col-md-12">
             <div class="features_items">
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-4 col-lg-3">
                         <div class="left-sidebar">
                             <div class="panel-group category-products" id="accordian">
                             @foreach(list_category() as $side_menu)
@@ -52,7 +52,7 @@
                                     <li>
                                         <a href="{{product_url($best)}}">
                                             <div class="img-block">
-                                                <img width="70" height="70" src="{{url(product_image_url($best->gambar1))}}" alt="{{$best->nama}}">
+                                                <img width="70" height="70" src="{{url(product_image_url($best->gambar1,'medium'))}}" alt="{{$best->nama}}">
                                             </div>
                                             <p class="product-name">{{short_description($best->nama,20)}}</p>
                                             <p class="price">{{price($best->hargaJual)}}</p>
@@ -82,7 +82,7 @@
                             {{ Theme::partial('subscribe') }}
                         </div>
                     </div>
-                    <div class="col-lg-9 col-xs-12 col-sm-8">
+                    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-9">
                         <div class="page">
                             <h2>Testimonial</h2>
                             @foreach(list_testimonial() as $key=>$value)

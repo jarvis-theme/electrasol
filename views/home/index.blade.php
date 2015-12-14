@@ -13,6 +13,7 @@
             </div>
             <div class="features_items">
                 <div class="row">
+                    {{-- */ $i=1 /* --}}
                     @foreach(home_product() as $home)
                     <div class="col-md-3" align="center">
                         <div class="product-image-wrapper">
@@ -22,13 +23,20 @@
                                     <p>{{short_description($home->nama,20)}}</p>
                                     <h2>{{price($home->hargaJual)}}</h2>
                                     <div class="btn-group col-xs-12 col-sm-12" role="group" aria-label="Default button group">
-                                        <a type="button" class="btn btn-default col-xs-3 col-sm-3" href="{{product_url($home)}}" style="background-color:#ffb900;color:#fff;"><i class="fa fa-eye"></i></a>
+                                        <a type="button" class="btn btn-default col-xs-3 col-sm-3" href="{{product_url($home)}}" id="view-home"><i class="fa fa-eye"></i></a>
                                         <a type="button" class="btn btn-default col-xs-9 col-sm-9" href="{{product_url($home)}}">Detail</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    @if($i % 2 == 0)
+                    <div class="clearfix visible-sm"></div>
+                    @endif
+                    @if($i % 4 == 0)
+                    <div class="clearfix visible-md visible-lg"></div>
+                    @endif
+                    {{-- */ $i++ /* --}}
                     @endforeach
                 </div>
             </div>
@@ -57,6 +65,11 @@
                                     @if($pay->nama == 'bitcoin' && $pay->aktif == 1)
                                     <div class="col-md-2">
                                         <img class="img-responsive img-payment" src="{{url('img/bitcoin.png')}}" alt="Bitcoin" title="Payment" />
+                                    </div>
+                                    @endif
+                                    @if($pay->nama == 'paypal' && $pay->aktif == 1)
+                                    <div class="col-md-2">
+                                        <img class="img-responsive img-payment" src="{{url('img/bank/paypal.png')}}" alt="Paypal" title="Payment" />
                                     </div>
                                     @endif
                                 @endforeach

@@ -45,19 +45,19 @@
 					<div class="form-group">
 						<label for="dropdown" class="col-lg-2">Negara</label>
 						<div class="col-lg-10">
-							{{Form::select('negara',array('' => '-- Pilih Negara --') + $negara,Input::old('negara'),array('required'=>'required', 'id'=>"negara", 'data-rel'=>"chosen", 'class'=>"form-control"))}}
+							{{Form::select('negara',array('' => '-- Pilih Negara --') + $negara, Input::old('negara'),array('required'=>'required', 'id'=>"negara", 'data-rel'=>"chosen", 'class'=>"form-control"))}}
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="dropdown" class="col-lg-2">Provinsi</label>
 						<div class="col-lg-10">
-							{{Form::select('provinsi',array('' => '-- Pilih Provinsi --'), Input::old("provinsi"),array('required'=>'required', 'id'=>"provinsi", 'data-rel'=>"chosen", 'class'=>"form-control"))}}
+							{{Form::select('provinsi',array('' => '-- Pilih Provinsi --') + $provinsi, Input::old("provinsi"),array('required'=>'required', 'id'=>"provinsi", 'data-rel'=>"chosen", 'class'=>"form-control"))}}
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="dropdown" class="col-lg-2">Kota</label>
 						<div class="col-lg-10">
-							{{Form::select('kota',array('' => '-- Pilih Kota --'), Input::old("kota"),array('required'=>'required', 'id'=>"kota", 'data-rel'=>"chosen", 'class'=>"form-control"))}}
+							{{Form::select('kota',array('' => '-- Pilih Kota --') + $kota, Input::old("kota"),array('required'=>'required', 'id'=>"kota", 'data-rel'=>"chosen", 'class'=>"form-control"))}}
 						</div>
 					</div>
 					<div class="form-group">
@@ -137,6 +137,11 @@
                                     @if($pay->nama == 'bitcoin' && $pay->aktif == 1)
                                     <div class="col-md-2">
                                         <img class="img-responsive img-payment" src="{{url('img/bitcoin.png')}}" alt="Bitcoin" title="Payment" />
+                                    </div>
+                                    @endif
+                                    @if($pay->nama == 'paypal' && $pay->aktif == 1)
+                                    <div class="col-md-2">
+                                        <img class="img-responsive img-payment" src="{{url('img/bank/paypal.png')}}" alt="Paypal" title="Payment" />
                                     </div>
                                     @endif
                                 @endforeach

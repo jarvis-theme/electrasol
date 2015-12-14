@@ -3,7 +3,7 @@
         <div class="col-md-12">
             <div class="features_items">
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-4 col-lg-3">
                         <div class="left-sidebar">
                             <div class="panel-group category-products" id="accordian">
                             @foreach(list_category() as $side_menu)
@@ -83,7 +83,7 @@
                         </div>
                     </div>
                     
-                    <div class="col-md-9 padding-right">
+                    <div class="col-md-8 col-lg-9 padding-right">
                         <form action="#" id="addorder">
                             <div class="product-details">
                                 <div class="col-md-6 detail">
@@ -239,6 +239,11 @@
                                     @if($pay->nama == 'bitcoin' && $pay->aktif == 1)
                                     <div class="col-md-2">
                                         <img class="img-responsive img-payment" src="{{url('img/bitcoin.png')}}" alt="Bitcoin" title="Payment" />
+                                    </div>
+                                    @endif
+                                    @if($pay->nama == 'paypal' && $pay->aktif == 1)
+                                    <div class="col-md-2">
+                                        <img class="img-responsive img-payment" src="{{url('img/bank/paypal.png')}}" alt="Paypal" title="Payment" />
                                     </div>
                                     @endif
                                 @endforeach

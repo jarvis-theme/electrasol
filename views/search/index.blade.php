@@ -3,7 +3,7 @@
     	<div class="col-md-12">
             <div class="features_items">
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-4 col-lg-3">
                         <div class="left-sidebar">
                             <div class="panel-group category-products" id="accordian">
                             @foreach(list_category() as $side_menu)
@@ -82,7 +82,7 @@
                             {{ Theme::partial('subscribe') }}
                         </div>
                     </div>
-                    <div class="col-lg-9 col-xs-12 padding-right">
+                    <div class="col-md-8 col-lg-9 padding-right">
                         <div class="features_items row">
                             <div class="container">
                                 <h2>Hasil Pencarian</h2>
@@ -90,8 +90,9 @@
                             
                             @if($jumlahCari != 0)
                                 @if(count($hasilpro) > 0)
+                                    {{-- */ $i=1 /* --}}
                                     @foreach($hasilpro as $produks)
-                                    <div class="col-md-4" align="center">
+                                    <div class="col-sm-3 col-md-4" align="center">
                                         <div class="product-image-wrapper">
                                             <div class="single-products">
                                                 <div class="productinfo">
@@ -106,6 +107,13 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @if($i%3==0)
+                                    <div class="clearfix visible-md visible-lg"></div>
+                                    @endif
+                                    @if($i%4==0)
+                                    <div class="clearfix visible-sm"></div>
+                                    @endif
+                                    {{-- */ $i++ /* --}}
                                     @endforeach
                                 </div>
                                 @endif
@@ -141,7 +149,6 @@
                                     @endforeach 
                                 </div>
                                 @endif
-                        	{{--$produk->links()--}}
                             @else
                             <article class="text-center">
                                 <i>Hasil pencarian tidak ditemukan</i>
@@ -182,6 +189,11 @@
                                     @if($pay->nama == 'bitcoin' && $pay->aktif == 1)
                                     <div class="col-md-2">
                                         <img class="img-responsive img-payment" src="{{url('img/bitcoin.png')}}" alt="Bitcoin" title="Payment" />
+                                    </div>
+                                    @endif
+                                    @if($pay->nama == 'paypal' && $pay->aktif == 1)
+                                    <div class="col-md-2">
+                                        <img class="img-responsive img-payment" src="{{url('img/bank/paypal.png')}}" alt="Paypal" title="Payment" />
                                     </div>
                                     @endif
                                 @endforeach

@@ -3,7 +3,7 @@
         <div class="col-md-12">
             <div class="features_items">
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-4 col-lg-3">
                         <div class="left-sidebar">
                             <div class="panel-group category-products" id="accordian">
                             @foreach(list_category() as $side_menu)
@@ -52,7 +52,7 @@
                                     <li>
                                         <a href="{{product_url($best)}}">
                                             <div class="img-block">
-                                                <img width="70" height="70" src="{{url(product_image_url($best->gambar1))}}">
+                                                <img width="70" height="70" src="{{url(product_image_url($best->gambar1, 'medium'))}}" alt="{{$best->nama}}">
                                             </div>
                                             <p class="product-name">{{short_description($best->nama,20)}}</p>
                                             <p class="price">{{price($best->hargaJual)}}</p>
@@ -82,14 +82,14 @@
                             {{ Theme::partial('subscribe') }}
                         </div>
                     </div>
-                    <div id="center_column" class="col-lg-9 col-xs-12 col-sm-8">
+                    <div id="center_column" class="col-xs-12 col-sm-8 col-md-8 col-lg-9">
                         <div class="contact-us">
                             <h2>Contact Us</h2>
                             <div class="maps">
                                 @if($kontak->lat!='0' || $kontak->lng!='0')
-                                    <iframe class="maps" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q={{ $kontak->lat.','.$kontak->lng }}&amp;aq=&amp;sll={{ $kontak->lat.','.$kontak->lng }}&amp;sspn=0.006849,0.009892&amp;ie=UTF8&amp;t=m&amp;z=14&amp;output=embed"></iframe><br />
+                                    <iframe class="maps" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q={{ $kontak->lat.','.$kontak->lng }}&amp;aq=&amp;sll={{ $kontak->lat.','.$kontak->lng }}&amp;sspn={{ $kontak->lat.','.$kontak->lng }}&amp;ie=UTF8&amp;t=m&amp;z=14&amp;output=embed"></iframe><br />
                                 @else
-                                    <iframe class="maps" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q={{ $kontak->alamat }}&amp;aq=0&amp;oq=gegerkalong+hil&amp;sspn=0.006849,0.009892&amp;ie=UTF8&amp;hq=&amp;hnear={{ $kontak->alamat }}&amp;t=m&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe><br />
+                                    <iframe class="maps" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q={{str_replace(' ','+',$kontak->alamat)}}&amp;aq=0&amp;oq={{str_replace(' ','+',$kontak->alamat)}}&amp;sspn={{ $kontak->lat.','.$kontak->lng }}&amp;ie=UTF8&amp;hq=&amp;hnear={{str_replace(' ','+',$kontak->alamat)}}&amp;t=m&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe><br />
                                 @endif
                             </div>
                             <div class="contact-desc">
@@ -154,14 +154,19 @@
                                     @endif
                                     @if($pay->nama == 'bitcoin' && $pay->aktif == 1)
                                     <div class="col-md-2">
-                                        <img class="img-responsive img-payment" src="{{url('img/bank/ipaymu.jpg')}}" alt="Ipaymu" title="Payment" />
+                                        <img class="img-responsive img-payment" src="{{url('img/bitcoin.png')}}" alt="Bitcoin" title="Payment" />
+                                    </div>
+                                    @endif
+                                    @if($pay->nama == 'paypal' && $pay->aktif == 1)
+                                    <div class="col-md-2">
+                                        <img class="img-responsive img-payment" src="{{url('img/bank/paypal.png')}}" alt="Paypal" title="Payment" />
                                     </div>
                                     @endif
                                 @endforeach
                             @endif
                             @if(count(list_dokus()) > 0 && list_dokus()->status == 1)
                             <div class="col-md-2">
-                                <img class="img-responsive img-payment" src="{{url('img/bitcoin.png')}}" alt="Bitcoin" title="Payment" />
+                                <img class="img-responsive img-payment" src="{{url('img/bank/doku.jpg')}}" alt="Doku Myshortcart" title="Payment" />
                             </div>
                             @endif
                         </div>
