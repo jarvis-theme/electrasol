@@ -5,7 +5,7 @@
                 <div class="row">
                     <div class="col-xs-6 col-md-4">
                         <div class="logo pull-left">
-                            @if(@getimagesize(url(logo_image_url())))
+                            @if( logo_image_url() )
                             <a href="{{ url('home') }}">
                                 <img class="img-responsive" id="logos" src="{{url(logo_image_url())}}" alt="Logo" /></a>
                             </a>
