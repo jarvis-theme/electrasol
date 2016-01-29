@@ -472,11 +472,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
     border: 1px solid #cccccc;
 }
 
-#payment .col-md-4 > p {
+#payment .col-md-4 > p, .payment-title {
     font-family: "open sans";
     font-size: 20px;
     font-weight: 300;
     padding-top: 15px;
+    text-align: left
 }
 
 .add-chart {
@@ -2006,3 +2007,9 @@ table ul {padding: 0}
 .submenu:hover, .submenu2:hover{background: transparent !important;}.submenu a:hover, .submenu2 a:hover{opacity: 0.3; border-bottom: 1px dotted}
 p{padding: 0 !important}
 #advertising .nav li a{padding-left: 0}
+@media screen and (min-width: 510px){
+  .payment-img{padding: 0; left: -45px; top: -5px}
+}
+@media screen and (max-width: 510px){
+  .payment-title{text-align: center;}
+}

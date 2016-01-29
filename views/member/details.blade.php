@@ -90,7 +90,7 @@
                                     @endif 
                                 @endif
                                 @if($pengaturan->checkoutType==1) 
-                                    @if($item->status <= 1)
+                                    @if($item->status < 1)
                                     <button onclick="window.open('{{url('konfirmasiorder/'.$item->id)}}','_blank')" class="btn btn-small btn-success" data-title="Edit" data-placement="top" data-tip="tooltip"><i class="fa fa-check"></i></button>
                                     @endif 
                                 @endif

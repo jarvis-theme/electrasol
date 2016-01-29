@@ -192,12 +192,12 @@
                         <div class="features_items detail">
                             <div class="container"><h2>Produk Lainnya</h2></div>
                             @foreach(other_product($produk) as $other)
-                            <div class="col-xs-6 col-md-4" align="center">
+                            <div class="col-xs-6 col-md-3" align="center">
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo">
                                             <img class="img-responsive thumb" src="{{url(product_image_url($other->gambar1,'medium'))}}" alt="{{$other->nama}}" title="{{$other->nama}}" />
-                                            <p>{{short_description($other->nama,20)}}</p>
+                                            <p>{{short_description($other->nama,15)}}</p>
                                             <h2>{{price($other->hargaJual)}}</h2>
                                             <div class="btn-org">
                                                 <a class="orange" href="{{product_url($other)}}">Detail</a>
@@ -222,10 +222,10 @@
             <div id="payment" align="center">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="col-md-4">
-                            <p>Metode Pembayaran :</p>
+                        <div class="col-md-3">
+                            <p class="payment-title">Metode Pembayaran :</p>
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-md-9 payment-img">
                             @if(list_banks()->count() > 0)
                                 @foreach(list_banks() as $value)
                                 <div class="col-xs-6 col-md-2">

@@ -116,10 +116,10 @@
             <div id="payment" align="center">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="col-md-4">
-                            <p>Metode Pembayaran :</p>
+                        <div class="col-md-3">
+                            <p class="payment-title">Metode Pembayaran :</p>
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-md-9 payment-img">
                             @if(list_banks()->count() > 0)
                                 @foreach(list_banks() as $value)
                                 <div class="col-xs-6 col-md-2">

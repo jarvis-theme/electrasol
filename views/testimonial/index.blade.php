@@ -68,11 +68,11 @@
                                 </div>
                             </div>
                             @endif
-                            @if(count(list_blog()) > 0)
+                            @if(count(recentBlog(null,3)) > 0)
                             <div class="latest-news">
                                 <div class="title"><h2>Artikel Terbaru</h2></div>
                                 <ul class="block-content">
-                                    @foreach(list_blog() as $blog)
+                                    @foreach(recentBlog(null,3) as $blog)
                                     <li>
                                         <h5 class="title-news">{{short_description($blog->judul,30)}}</h5>
                                         <p class="desc">{{short_description($blog->isi,46)}} <a href="{{blog_url($blog)}}"><span>selengkapnya</span></a></p> 
