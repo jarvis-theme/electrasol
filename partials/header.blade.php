@@ -7,7 +7,7 @@
                         <div class="logo pull-left">
                             @if( logo_image_url() )
                             <a href="{{ url('home') }}">
-                                <img class="img-responsive" id="logos" src="{{url(logo_image_url())}}" alt="Logo" /></a>
+                                <img class="img-responsive" id="logos" src="{{url(logo_image_url())}}" alt="Logo {{Theme::place('title')}}" /></a>
                             </a>
                             @else
                             <a href="{{url('home')}}"><h1 class="text-logo">{{ shortText(Theme::place('title'),26) }}</h1></a>
@@ -51,18 +51,21 @@
 
                                 @foreach(list_category() as $key=>$menu)
                                     @if($menu->parent=='0')
-                                        @if(count($menu->anak) < 1)
+                                        @if($menu->anak->count() < 1)
                                         <li>
                                             <a href="{{category_url($menu)}}">{{$menu->nama}}</a>
+                                        </li>
                                         @else
                                         <li class="dropdown">
                                             <a href="{{category_url($menu)}}" class="dropdown-toggle" data-toggle="dropdown">
                                                 {{$menu->nama}} <b class="caret"></b>
                                             </a>
+                                            @if($menu->anak->count() > 0)
                                             <ul class="dropdown-menu">
                                                 @foreach($menu->anak as $key => $submenu)
-                                                <li><a href="{{category_url($submenu)}}">{{$submenu->nama}}</a></li>
-                                                    @if(count($submenu->anak->count()) > 0)
+                                                <li class="submenu">
+                                                    <a href="{{category_url($submenu)}}">{{$submenu->nama}}</a>
+                                                    @if($submenu->anak->count() > 0)
                                                     <ul>
                                                         @foreach($submenu->anak as $submenu2)
                                                             @if($submenu2->parent == $submenu->id)
@@ -73,10 +76,12 @@
                                                         @endforeach
                                                     </ul>
                                                     @endif
+                                                </li>
                                                 @endforeach
                                             </ul>
-                                        @endif
+                                            @endif
                                         </li>
+                                        @endif
                                     @endif
                                 @endforeach  
                             </ul>

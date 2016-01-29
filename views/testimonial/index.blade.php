@@ -5,6 +5,7 @@
                 <div class="row">
                     <div class="col-md-4 col-lg-3">
                         <div class="left-sidebar">
+                            @if(count(list_category()) > 0)
                             <div class="panel-group category-products" id="accordian">
                             @foreach(list_category() as $side_menu)
                                 @if($side_menu->parent == '0')
@@ -44,7 +45,8 @@
                                 @endif
                             @endforeach
                             </div>
-                            
+                            @endif
+                            @if(count(best_seller()) > 0)
                             <div class="best-seller">
                                 <div class="title"><h2>Produk Terlaris</h2></div>
                                 <ul class="block-content">
@@ -65,7 +67,8 @@
                                     <a href="{{url('produk')}}">Lihat Semua</a>
                                 </div>
                             </div>
-
+                            @endif
+                            @if(count(list_blog()) > 0)
                             <div class="latest-news">
                                 <div class="title"><h2>Artikel Terbaru</h2></div>
                                 <ul class="block-content">
@@ -78,6 +81,7 @@
                                     @endforeach
                                 </ul>
                             </div>
+                            @endif
 
                             {{ Theme::partial('subscribe') }}
                         </div>

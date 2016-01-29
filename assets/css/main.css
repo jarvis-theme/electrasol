@@ -563,6 +563,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c20000', end
     color: #ffffff;
     font-family: "open sans";
     font-weight: 300;
+    padding: 0
 }
 .footer-top .container {
   border-bottom: 1px solid #E0E0DA;
@@ -1161,8 +1162,8 @@ h2.title {
     font-family: "open sans";
     font-size: 14px;
     font-weight: bold;
-    padding-left: 10px;
-    padding-top: 10px;
+    padding-left: 10px !important;
+    padding-top: 10px !important;
     text-align: left;
 }
 .vote {
@@ -1411,6 +1412,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b10000', end
 .latest-news .date {
     font-size: 11px;
     font-weight: unset;
+    margin-top: 5px !important
 }
 .left-sidebar .latest-news li .product-name {color: #000;font-size: 15px;font-weight: 600;line-height: 15px;margin: 0;}
 .left-sidebar .latest-news li .price {font-size:13px; color:#ec1b1b; font-weight:400}
@@ -1967,7 +1969,7 @@ input#qty {
 .confirm p.form-group{padding-left: 0;}
 .maps{height: 300px;width: 100%}
 .productinfo > .btn-group{padding: 0;}
-.img-payment{margin: 5px;}
+.img-payment{margin: 5px;border-radius: 5px}
 .fb_reset {display: inline-block;}
 .fb-share-button {top: 3px;margin-left: 5px;}
 .sosmed{margin: -15px 0 15px 0;}
@@ -1985,10 +1987,22 @@ input#qty {
 .underline{text-decoration: underline}.black{color: #333}.detailorder{list-style: inside;}
 .center{text-align: center}
 .img100{width: 100%}#nostock{color: #d9534f}.child1{padding-left: 20px}.child2{padding-top: 10px}
-#idxproduct{background-color:#ffb900;color:#fff}#hal{margin-bottom:10px}#titlehal{margin-bottom: 3px}#detailtag{margin-bottom: 15px}#tos{height: 0px}#testi{text-align: right; font-style:italic; margin-top: 10px}#logos{margin-top: -50px}.submenu2{padding-left: 45px}#fbicon{color:#0083C9}.copyright{text-decoration: none;color: #fff}.mobilemenu{color: #000}
+#idxproduct{background-color:#ffb900;color:#fff}#hal{margin-bottom:10px}#titlehal{margin-bottom: 3px}#detailtag{margin-bottom: 15px; padding: 20px 0}#tos{height: 0px}#testi{text-align: right; font-style:italic; margin-top: 10px}#logos{margin-top: -40px}#fbicon{color:#0083C9}.copyright{text-decoration: none;color: #fff}.mobilemenu{color: #000}
+#hal p{padding: 0}
 @media only screen and (max-width: 360px) {
   .shop-menu{width: 160px}
   .inputsearch{width: 100% !important}
+  .productinfo p, .productinfo h2{font-size: 12px !important}
+  .productinfo a.orange{font-size: 10px}
+  .productinfo .btn-group a{font-size: 12px}
+  .title-features h3{font-size: 20px}
+  .page .block .blockquotes blockquote, #testi{font-size: 15px}
 }
 table ul {padding: 0}
-.detailmember{margin-top: 20px}#view-home{background-color:#ffb900;color:#fff}
+.detailmember{margin-top: 20px}#view-home{background-color:#ffb900;color:#fff}.img-block{max-width: 272px; margin: 0 auto 30px}
+@media only screen and (max-width: 480px) {
+  .submenu2 { padding-left: 20px !important }
+}
+.submenu:hover, .submenu2:hover{background: transparent !important;}.submenu a:hover, .submenu2 a:hover{opacity: 0.3; border-bottom: 1px dotted}
+p{padding: 0 !important}
+#advertising .nav li a{padding-left: 0}

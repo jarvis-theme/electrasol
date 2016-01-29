@@ -5,6 +5,7 @@
                 <div class="row">
                     <div class="col-md-4 col-lg-3">
                         <div class="left-sidebar">
+                            @if(count(list_category()) > 0)
                             <div class="panel-group category-products" id="accordian">
                             @foreach(list_category() as $side_menu)
                                 @if($side_menu->parent == '0')
@@ -44,7 +45,8 @@
                                 @endif
                             @endforeach
                             </div>
-                            
+                            @endif
+                            @if(count(best_seller()) > 0)
                             <div class="best-seller">
                                 <div class="title"><h2>Produk Terlaris</h2></div>
                                 <ul class="block-content">
@@ -65,11 +67,12 @@
                                     <a href="{{url('produk')}}">Lihat Semua</a>
                                 </div>
                             </div>
-
+                            @endif
+                            @if(count(recentBlog(null,3)))
                             <div class="latest-news">
                                 <div class="title"><h2>Artikel Terbaru</h2></div>
                                 <ul class="block-content">
-                                    @foreach(list_blog() as $blog)
+                                    @foreach(recentBlog(null,3) as $blog)
                                     <li>
                                         <h5 class="title-news">{{short_description($blog->judul,30)}}</h5>
                                         <p class="desc">{{short_description($blog->isi,46)}} <a href="{{blog_url($blog)}}"><span>selengkapnya</span></a></p> 
@@ -78,7 +81,7 @@
                                     @endforeach
                                 </ul>
                             </div>
-
+                            @endif
                             {{ Theme::partial('subscribe') }}
                         </div>
                     </div>
@@ -87,53 +90,48 @@
                         	<div class="entry">
                                 <!-- <h2>Customer Service</h2> -->
                             </div>
-                            <div class="bs-example" data-example-id="collapse-accordion">
-                                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                                    @if($service->tos != "")
+                            <div class="panel-group" id="accordion">
+                                @if($service->tos != "")
                                     <div class="panel panel-default">
-                                        <div class="panel-heading" role="tab" id="headingOne">
+                                        <div class="panel-heading">
                                             <h4 class="panel-title">
-                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#tos" aria-expanded="false" aria-controls="tos">Kebijakan Layanan</a>
+                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Kebijakan Layanan</a>
                                             </h4>
                                         </div>
-                                        <div aria-expanded="false" id="tos" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                                            <div class="panel-body">
-                                                <p>{{$service->tos}}</p>
-                                            </div>
+                                        <div id="collapse1" class="panel-collapse collapse in">
+                                            <div class="panel-body">{{$service->tos}}</div>
                                         </div>
                                     </div>
-                                    @endif
-                                    @if($service->refund != "")
+                                @endif
+                                @if($service->refund != "")
                                     <div class="panel panel-default">
-                                        <div class="panel-heading" role="tab" id="headingTwo">
+                                        <div class="panel-heading">
                                             <h4 class="panel-title">
-                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#refund" aria-expanded="false" aria-controls="refund">Kebijakan Pengembalian</a>
+                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Kebijakan Pengembalian</a>
                                             </h4>
-                                            
                                         </div>
-                                        <div aria-expanded="false" id="refund" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                        <div id="collapse2" class="panel-collapse collapse">
                                             <div class="panel-body">
                                                 <p>{{$service->refund}}</p>
                                             </div>
                                         </div>
                                     </div>
-                                    @endif
-                                    @if($service->privacy != "")
+                                @endif
+                                @if($service->refund != "")
                                     <div class="panel panel-default">
-                                        <div class="panel-heading" role="tab" id="headingThree">
+                                        <div class="panel-heading">
                                             <h4 class="panel-title">
-                                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#privacy" aria-expanded="false" aria-controls="privacy">Kebijakan Privasi</a>
+                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Kebijakan Privasi</a>
                                             </h4>
                                         </div>
-                                        <div aria-expanded="false" id="privacy" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                        <div id="collapse2" class="panel-collapse collapse">
                                             <div class="panel-body">
                                                 <p>{{$service->privacy}}</p>
                                             </div>
                                         </div>
                                     </div>
-                                    @endif
-                                </div>
-                            </div>
+                                @endif
+                            </div> 
                         </div>
                     </div>
                 </div>
@@ -154,33 +152,33 @@
                         <div class="col-md-8">
                             @if(list_banks()->count() > 0)
                                 @foreach(list_banks() as $value)
-                                <div class="col-md-2">
-                                    <img class="img-responsive img-payment" src="{{bank_logo($value)}}" alt="{{$value->bankdefault->nama}}" title="Payment" />
+                                <div class="col-xs-6 col-md-2">
+                                    <img class="img-responsive img-payment" src="{{bank_logo($value)}}" alt="{{$value->bankdefault->nama}}" title="{{$value->bankdefault->nama}}" />
                                 </div>
                                 @endforeach
                             @endif
                             @if(list_payments()->count() > 0)
                                 @foreach(list_payments() as $pay)
                                     @if($pay->nama == 'ipaymu' && $pay->aktif == 1)
-                                    <div class="col-md-2">
-                                        <img class="img-responsive img-payment" src="{{url('img/bank/ipaymu.jpg')}}" alt="Ipaymu" title="Payment" />
+                                    <div class="col-xs-6 col-md-2">
+                                        <img class="img-responsive img-payment" src="{{url('img/bank/ipaymu.jpg')}}" alt="Ipaymu" title="Ipaymu" />
                                     </div>
                                     @endif
                                     @if($pay->nama == 'bitcoin' && $pay->aktif == 1)
-                                    <div class="col-md-2">
-                                        <img class="img-responsive img-payment" src="{{url('img/bitcoin.png')}}" alt="Bitcoin" title="Payment" />
+                                    <div class="col-xs-6 col-md-2">
+                                        <img class="img-responsive img-payment" src="{{url('img/bitcoin.png')}}" alt="Bitcoin" title="Bitcoin" />
                                     </div>
                                     @endif
                                     @if($pay->nama == 'paypal' && $pay->aktif == 1)
-                                    <div class="col-md-2">
-                                        <img class="img-responsive img-payment" src="{{url('img/bank/paypal.png')}}" alt="Paypal" title="Payment" />
+                                    <div class="col-xs-6 col-md-2">
+                                        <img class="img-responsive img-payment" src="{{url('img/bank/paypal.png')}}" alt="Paypal" title="Paypal" />
                                     </div>
                                     @endif
                                 @endforeach
                             @endif
                             @if(count(list_dokus()) > 0 && list_dokus()->status == 1)
-                            <div class="col-md-2">
-                                <img class="img-responsive img-payment" src="{{url('img/bank/doku.jpg')}}" alt="Doku Myshortcart" title="Payment" />
+                            <div class="col-xs-6 col-md-2">
+                                <img class="img-responsive img-payment" src="{{url('img/bank/doku.jpg')}}" alt="Doku Myshortcart" title="Doku" />
                             </div>
                             @endif
                         </div>

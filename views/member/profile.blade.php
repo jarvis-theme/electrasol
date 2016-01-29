@@ -1,5 +1,5 @@
 <div class="top-list container">
-    <h2><i class="fa fa-user"></i> &nbsp;Edit Profile</h2>
+    <h2><i class="fa fa-user"></i> &nbsp;Ubah Profil</h2>
     <div class="clr"></div>
     <hr>
 </div>
@@ -10,8 +10,8 @@
             <div id="advertising" class="block">
             	<div><h2>My Account</h2></div>
             	<ul class="nav">
-					<li><a href="{{url('member')}}">Order History</a></li>                         
-					<li><a href="{{url('member/profile/edit')}}">Edit Profile</a></li>
+					<li><a href="{{url('member')}}">Daftar Pembelian</a></li>                         
+					<li><a href="{{url('member/profile/edit')}}">Ubah Profil</a></li>
 				</ul>
             </div>            
         </div>

@@ -5,7 +5,7 @@
                 <div class="col-md-4">
                     <div class="single-widget">
                         <h2>Tentang Kami</h2>
-                        <p>{{short_description($aboutUs[1]->isi,400)}}</p>
+                        <p>{{short_description(about_us(1)->isi,400)}}</p>
                     </div>
                 </div>
                 @foreach(other_menu() as $key=>$menu)

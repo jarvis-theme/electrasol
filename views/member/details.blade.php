@@ -9,8 +9,8 @@
             <div id="advertising" class="block">
                 <div><h2>My Account</h2></div>
                 <ul class="nav">
-                    <li><a href="{{url('member')}}">Order History</a></li>                         
-                    <li><a href="{{url('member/profile/edit')}}">Edit Profile</a></li>
+                    <li><a href="{{url('member')}}">Daftar Pembelian</a></li>                         
+                    <li><a href="{{url('member/profile/edit')}}">Ubah Profil</a></li>
                 </ul>
             </div>            
         </div>
@@ -120,7 +120,7 @@
                             @foreach ($inquiry as $item)
                             <tr>
                                 <td>
-                                    {{prefixOrder()}}{{$item->kodeInquiry}}
+                                    {{prefixOrder().$item->kodeInquiry}}
                                 </td>
                                 <td>
                                     {{waktu($item->created_at)}}

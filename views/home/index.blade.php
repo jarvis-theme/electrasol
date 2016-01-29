@@ -15,7 +15,7 @@
                 <div class="row">
                     {{-- */ $i=1 /* --}}
                     @foreach(home_product() as $home)
-                    <div class="col-md-3" align="center">
+                    <div class="col-xs-6 col-md-3" align="center">
                         <div class="product-image-wrapper">
                             <div class="single-products">
                                 <div class="productinfo">
@@ -23,15 +23,15 @@
                                     <p>{{short_description($home->nama,20)}}</p>
                                     <h2>{{price($home->hargaJual)}}</h2>
                                     <div class="btn-group col-xs-12 col-sm-12" role="group" aria-label="Default button group">
-                                        <a type="button" class="btn btn-default col-xs-3 col-sm-3" href="{{product_url($home)}}" id="view-home"><i class="fa fa-eye"></i></a>
-                                        <a type="button" class="btn btn-default col-xs-9 col-sm-9" href="{{product_url($home)}}">Detail</a>
+                                        <a type="button" class="btn btn-default col-xs-4 col-sm-3" href="{{product_url($home)}}" id="view-home"><i class="fa fa-eye"></i></a>
+                                        <a type="button" class="btn btn-default col-xs-8 col-sm-9" href="{{product_url($home)}}">Detail</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     @if($i % 2 == 0)
-                    <div class="clearfix visible-sm"></div>
+                    <div class="clearfix visible-xs visible-sm"></div>
                     @endif
                     @if($i % 4 == 0)
                     <div class="clearfix visible-md visible-lg"></div>
@@ -50,33 +50,33 @@
                         <div class="col-md-8">
                             @if(list_banks()->count() > 0)
                                 @foreach(list_banks() as $value)
-                                <div class="col-md-2">
-                                    <img class="img-responsive img-payment" src="{{bank_logo($value)}}" alt="{{$value->bankdefault->nama}}" title="Payment" />
+                                <div class="col-xs-6 col-md-2">
+                                    <img class="img-responsive img-payment" src="{{bank_logo($value)}}" alt="{{$value->bankdefault->nama}}" title="{{$value->bankdefault->nama}}" />
                                 </div>
                                 @endforeach
                             @endif
                             @if(list_payments()->count() > 0)
                                 @foreach(list_payments() as $pay)
                                     @if($pay->nama == 'ipaymu' && $pay->aktif == 1)
-                                    <div class="col-md-2">
-                                        <img class="img-responsive img-payment" src="{{url('img/bank/ipaymu.jpg')}}" alt="Ipaymu" title="Payment" />
+                                    <div class="col-xs-6 col-md-2">
+                                        <img class="img-responsive img-payment" src="{{url('img/bank/ipaymu.jpg')}}" alt="Ipaymu" title="Ipaymu" />
                                     </div>
                                     @endif
                                     @if($pay->nama == 'bitcoin' && $pay->aktif == 1)
-                                    <div class="col-md-2">
-                                        <img class="img-responsive img-payment" src="{{url('img/bitcoin.png')}}" alt="Bitcoin" title="Payment" />
+                                    <div class="col-xs-6 col-md-2">
+                                        <img class="img-responsive img-payment" src="{{url('img/bitcoin.png')}}" alt="Bitcoin" title="Bitcoin" />
                                     </div>
                                     @endif
                                     @if($pay->nama == 'paypal' && $pay->aktif == 1)
-                                    <div class="col-md-2">
-                                        <img class="img-responsive img-payment" src="{{url('img/bank/paypal.png')}}" alt="Paypal" title="Payment" />
+                                    <div class="col-xs-6 col-md-2">
+                                        <img class="img-responsive img-payment" src="{{url('img/bank/paypal.png')}}" alt="Paypal" title="Paypal" />
                                     </div>
                                     @endif
                                 @endforeach
                             @endif
                             @if(count(list_dokus()) > 0 && list_dokus()->status == 1)
-                            <div class="col-md-2">
-                                <img class="img-responsive img-payment" src="{{url('img/bank/doku.jpg')}}" alt="Doku Myshortcart" title="Payment" />
+                            <div class="col-xs-6 col-md-2">
+                                <img class="img-responsive img-payment" src="{{url('img/bank/doku.jpg')}}" alt="Doku Myshortcart" title="Doku" />
                             </div>
                             @endif
                         </div>
