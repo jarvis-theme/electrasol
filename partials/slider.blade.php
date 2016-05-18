@@ -13,17 +13,13 @@
                     <div class="carousel-inner">
                     {{-- */ $i = 0; /* --}}
                     @foreach (slideshow() as $val)  
-                        @if($i!=0)
-                        <div class="item">
-                        @else
-                        <div class="item active">
-                        @endif
+                        <div class="item {{$i == 0 ? 'active' : ''}}">
                             @if(!empty($val->url))
                             <a href="{{filter_link_url($val->url)}}" target="_blank">
                             @else
                             <a href="#">
                             @endif
-                                <img src="{{url(slide_image_url($val->gambar))}}" width="100%" alt="Info Promo">
+                                <img src="{{url(slide_image_url($val->gambar))}}" width="100%" alt="{{$val->title}}">
                             </a>
                         </div>
                         {{-- */ $i += 1; /* --}}

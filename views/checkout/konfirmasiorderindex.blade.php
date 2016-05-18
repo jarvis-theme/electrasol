@@ -8,7 +8,7 @@
                             <div class="confirm">
                                 <h2>Konfirmasi Order</h2>
                                 <p class="form-group col-xs-12 col-sm-9">
-                                    <input class="form-control" placeholder="Kode Order" type="text" required>
+                                    <input class="form-control" name="kodeorder" placeholder="Kode Order" type="text" required>
                                 </p>
                                 <button class="btn btn-danger" type="submit">Cari Kode</button>
                             </div>

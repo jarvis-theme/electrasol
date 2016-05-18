@@ -257,12 +257,17 @@
                                 <img class="img-responsive img-payment" src="{{url('img/bank/doku.jpg')}}" alt="Doku Myshortcart" title="Doku" />
                             </div>
                             @endif
+                            @if(count(list_veritrans()) > 0 && list_veritrans()->status == 1 && list_veritrans()->type == 1)
+                            <div class="col-xs-6 col-md-2">
+                                <img class="img-responsive img-payment" src="{{url('img/bank/veritrans.png')}}" alt="Veritrans" title="Veritrans">
+                            </div>
+                            @endif
                         </div>
                     </div>
                 </div>
             </div>
             
-            {{pluginTrustklik()}}
+            {{ pluginComment(product_url($produk), @$produk) }}
 
             <div id="advertise-homepage" align="center">
                 <div class="row">

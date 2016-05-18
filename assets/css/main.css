@@ -2007,6 +2007,23 @@ table ul {padding: 0}
 .submenu:hover, .submenu2:hover{background: transparent !important;}.submenu a:hover, .submenu2 a:hover{opacity: 0.3; border-bottom: 1px dotted}
 p{padding: 0 !important}
 #advertising .nav li a{padding-left: 0}
+center#paypal button[type="submit"] {
+    background: #019CDE;
+    border: none;
+    padding: 10px;
+    color: #fff;
+    border-radius: 5px;
+}
+center#paypal button[type="submit"]:hover { opacity: 0.6; cursor: pointer; }
+form[name="order"] > input[name="SAVE"] {
+  background: #B5062D; border: medium none; padding: 10px; border-radius: 5px; color: #fff;
+}
+form[name="order"] > input[name="SAVE"]:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+
 @media screen and (min-width: 510px){
   .payment-img{padding: 0; left: -45px; top: -5px}
 }
