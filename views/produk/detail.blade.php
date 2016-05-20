@@ -226,13 +226,13 @@
                             <p class="payment-title">Metode Pembayaran :</p>
                         </div>
                         <div class="col-md-9 payment-img">
-                            @if(list_banks()->count() > 0)
-                                @foreach(list_banks() as $value)
+                            @foreach(list_banks() as $value)
+                                @if($value->status == 1)
                                 <div class="col-xs-6 col-md-2">
                                     <img class="img-responsive img-payment" src="{{bank_logo($value)}}" alt="{{$value->bankdefault->nama}}" title="{{$value->bankdefault->nama}}" />
                                 </div>
-                                @endforeach
-                            @endif
+                                @endif
+                            @endforeach
                             @if(list_payments()->count() > 0)
                                 @foreach(list_payments() as $pay)
                                     @if($pay->nama == 'ipaymu' && $pay->aktif == 1)
