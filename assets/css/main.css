@@ -350,7 +350,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#94918a', end
 .search_box input {
     background: #a70000 url("../images/searchicon.png") no-repeat scroll 175px center;
     border: medium none;
-    color: #b2b2b2;
+    color: #dcdcdc;
     font-family: "roboto";
     font-size: 12px;
     font-weight: 300;
@@ -458,15 +458,15 @@ ul.sub-menu {
     margin-top: 50px;
 }
 
-#payment {
+#payment, .bgrey {
     background: rgba(255,255,255,1);
-background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(241,241,241,1) 100%);
-background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(100%, rgba(241,241,241,1)));
-background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(241,241,241,1) 100%);
-background: -o-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(241,241,241,1) 100%);
-background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(241,241,241,1) 100%);
-background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(241,241,241,1) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f1f1f1', GradientType=0 );
+    background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(241,241,241,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(100%, rgba(241,241,241,1)));
+    background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(241,241,241,1) 100%);
+    background: -o-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(241,241,241,1) 100%);
+    background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(241,241,241,1) 100%);
+    background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(241,241,241,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f1f1f1', GradientType=0 );
     padding-bottom: 20px;
     padding-top: 20px;
     border: 1px solid #cccccc;
@@ -1553,9 +1553,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#06143c', end
 }
 
 .page .block .blockquotes blockquote {
-    background: #ea3838 none repeat scroll 0 0;
+    background: #fff none repeat scroll 0 0;
     border-left: 5px solid #c91919;
-    color: #ffffff;
+    color: #000;
     font-family: "open sans";
     font-size: 19px;
     font-weight: 300;
@@ -1668,7 +1668,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#06143c', end
     border: 1px solid #f7f7f0;
     margin-bottom: 20px;
     margin-left: 0;
-    min-height: 445px;
+    min-height: 413px;
     overflow: hidden;
     padding: 20px;
     position: relative;
@@ -1984,12 +1984,26 @@ input#qty {
 }
 .inner-column{margin-bottom: 20px;}
 .text-logo{color: #2E2A2D;text-transform: capitalize;}
-
-.underline{text-decoration: underline}.black{color: #333}.detailorder{list-style: inside;}
+.underline{text-decoration: underline}
+.black{color: #333}
+.detailorder{list-style: inside;}
 .center{text-align: center}
-.img100{width: 100%}#nostock{color: #d9534f}.child1{padding-left: 20px}.child2{padding-top: 10px}
-#idxproduct{background-color:#ffb900;color:#fff}#hal{margin-bottom:10px}#titlehal{margin-bottom: 3px}#detailtag{margin-bottom: 15px; padding: 20px 0}#tos{height: 0px}#testi{text-align: right; font-style:italic; margin-top: 10px}#logos{margin-top: -40px}#fbicon{color:#0083C9}.copyright{text-decoration: none;color: #fff}.mobilemenu{color: #000}
+.img100{width: 100%}
+#nostock{color: #d9534f}
+.child1{padding-left: 20px}
+.child2{padding-top: 10px}
+#idxproduct{background-color:#ffb900;color:#fff}
+#hal{margin-bottom:10px}
+#titlehal{margin-bottom: 3px}
+#detailtag{margin-bottom: 15px; padding: 20px 0}
+#tos{height: 0px}
+#testi{text-align: right; font-style:italic; margin-top: 10px}
+#logos{margin-top: -40px}
+#fbicon{color:#0083C9}
+.copyright{text-decoration: none;color: #fff}
+.mobilemenu{color: #fff}
 #hal p{padding: 0}
+
 @media only screen and (max-width: 360px) {
   .shop-menu{width: 160px}
   .inputsearch{width: 100% !important}
@@ -2022,11 +2036,34 @@ form[name="order"] > input[name="SAVE"]:hover {
   opacity: 0.8;
   cursor: pointer;
 }
-
-
-@media screen and (min-width: 510px){
-  .payment-img{padding: 0; left: -45px; top: -5px}
+.attribute_list { display: inline-block; float: left; }
+.sosmed .fb-share-button { top: 3px !important; }
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #dcdcdc;
 }
-@media screen and (max-width: 510px){
-  .payment-title{text-align: center;}
+::-moz-placeholder { /* Firefox 19+ */
+  color: #dcdcdc;
 }
+:-ms-input-placeholder { /* IE 10+ */
+  color: #dcdcdc;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: #dcdcdc;
+}
+.single-widget ul li a:active,
+.single-widget ul li:active,
+.single-widget ul li a:visited,
+.single-widget ul li a:link {
+  background: transparent;
+}
+form .confirm p { float: none; }
+article .bgrey { padding: 0 20px; margin-bottom: 20px; }
+.reset-password .bgrey { padding: 0 20px; }
+.reset-password .bgrey form { margin-bottom: 30px; }
+.new-user .bgrey { padding: 0 20px 20px; }
+.subscribe .left-sidebar .newsletter_left h2 { margin-top: 0; }
+.product-list.bgrey { padding: 0 20px 20px }
+.payment-img img { display: inline-block; float: left; }
+.midtrans { padding: 10px; background: #f0f0f0; }
+.my_account { background: #fff; padding: 0 10px 10px; }
+.my_account .active { background: #f6f6f6; }

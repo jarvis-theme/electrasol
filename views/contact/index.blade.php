@@ -85,7 +85,7 @@
                             {{ Theme::partial('subscribe') }}
                         </div>
                     </div>
-                    <div id="center_column" class="col-xs-12 col-sm-8 col-md-8 col-lg-9">
+                    <div id="center_column" class="col-xs-12 col-sm-12 col-md-8 col-lg-9">
                         <div class="contact-us">
                             <h2>Contact Us</h2>
                             <div class="maps">
@@ -132,7 +132,7 @@
 </section>
 
 <section id="midle-product-categories">
-    <div class="container">         
+    <div class="container">
         <div class="col-md-12">
             <div id="payment" align="center">
                 <div class="row">
@@ -143,34 +143,27 @@
                         <div class="col-md-9 payment-img">
                             @if(list_banks()->count() > 0)
                                 @foreach(list_banks() as $value)
-                                <div class="col-xs-6 col-md-2">
                                     <img class="img-responsive img-payment" src="{{bank_logo($value)}}" alt="{{$value->bankdefault->nama}}" title="{{$value->bankdefault->nama}}" />
-                                </div>
                                 @endforeach
                             @endif
                             @if(list_payments()->count() > 0)
                                 @foreach(list_payments() as $pay)
                                     @if($pay->nama == 'ipaymu' && $pay->aktif == 1)
-                                    <div class="col-xs-6 col-md-2">
                                         <img class="img-responsive img-payment" src="{{url('img/bank/ipaymu.jpg')}}" alt="Ipaymu" title="Ipaymu" />
-                                    </div>
                                     @endif
                                     @if($pay->nama == 'bitcoin' && $pay->aktif == 1)
-                                    <div class="col-xs-6 col-md-2">
                                         <img class="img-responsive img-payment" src="{{url('img/bitcoin.png')}}" alt="Bitcoin" title="Bitcoin" />
-                                    </div>
                                     @endif
                                     @if($pay->nama == 'paypal' && $pay->aktif == 1)
-                                    <div class="col-xs-6 col-md-2">
                                         <img class="img-responsive img-payment" src="{{url('img/bank/paypal.png')}}" alt="Paypal" title="Paypal" />
-                                    </div>
                                     @endif
                                 @endforeach
                             @endif
                             @if(count(list_dokus()) > 0 && list_dokus()->status == 1)
-                            <div class="col-xs-6 col-md-2">
                                 <img class="img-responsive img-payment" src="{{url('img/bank/doku.jpg')}}" alt="Doku Myshortcart" title="Doku" />
-                            </div>
+                            @endif
+                            @if(count(list_veritrans()) > 0 && list_veritrans()->status == 1 && list_veritrans()->type == 1)
+                                <img class="img-responsive img-payment midtrans" src="{{url('img/bank/midtrans.png')}}" alt="Midtrans" title="Midtrans">
                             @endif
                         </div>
                     </div>

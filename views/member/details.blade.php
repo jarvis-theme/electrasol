@@ -6,10 +6,10 @@
 <div class="container">
     <div class="inner-column row">
         <div id="left_sidebar" class="col-xs-12 col-md-3">
-            <div id="advertising" class="block">
+            <div class="block my_account">
                 <div><h2>My Account</h2></div>
                 <ul class="nav">
-                    <li><a href="{{url('member')}}">Daftar Pembelian</a></li>                         
+                    <li class="active"><a href="{{url('member')}}">Daftar Pembelian</a></li>                         
                     <li><a href="{{url('member/profile/edit')}}">Ubah Profil</a></li>
                 </ul>
             </div>            

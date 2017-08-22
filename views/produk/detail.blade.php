@@ -131,25 +131,6 @@
                                             <p>Deskripsi Produk :</p>
                                             <p class="desc">{{$produk->deskripsi}}</p>
                                         </div>
-                                        @if($opsiproduk->count() > 0)
-                                        <div class="block-color attribute ">
-                                            <div class="attribute_list">
-                                                <div class="color-list">
-                                                    <label class="col-sm-4 control-label">Opsi :</label>
-                                                    <div class="col-sm-5">
-                                                        <select class="form-control attribute_select" name="opsiproduk">
-                                                            <option value="">-- Pilih Opsi --</option>
-                                                            @foreach ($opsiproduk as $key => $opsi)
-                                                            <option value="{{$opsi->id}}" {{ $opsi->stok==0 ? 'disabled':''}} >
-                                                                {{$opsi->opsi1.($opsi->opsi2=='' ? '':' / '.$opsi->opsi2).($opsi->opsi3=='' ? '':' / '.$opsi->opsi3)}} {{price($opsi->harga)}}
-                                                            </option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -157,12 +138,12 @@
                             <div class="btm-details">
                                 <div class="quantity">
                                     <div class="form-group">
-                                        <label class="control-label">Quantity :</label>
+                                        <label class="control-label">Jumlah :</label>
                                         <div class="qty-block">
                                             <a class="product_quantity_down" data-field-qty="qty" href="#">
                                                 <span><i class="icon-minus"></i></span>
                                             </a>
-                                            <input type="text" value="1" class="text" id="qty" name="qty">
+                                            <input type="text" value="1" class="text" id="qty" name="qty" pattern="[0-9]">
                                             <a class="product_quantity_up" data-field-qty="qty" href="#">
                                                 <span><i class="icon-plus"></i></span>
                                             </a>
@@ -170,6 +151,19 @@
                                         </div>
                                      </div>
                                 </div>
+                                @if($opsiproduk->count() > 0)
+                                <div class="attribute_list">
+                                    <label class="control-label">Opsi :</label>
+                                    <select class="form-control attribute_select" name="opsiproduk">
+                                        <option value="">-- Pilih Opsi --</option>
+                                        @foreach ($opsiproduk as $key => $opsi)
+                                        <option value="{{$opsi->id}}" {{ $opsi->stok==0 ? 'disabled':''}} >
+                                            {{$opsi->opsi1.($opsi->opsi2=='' ? '':' / '.$opsi->opsi2).($opsi->opsi3=='' ? '':' / '.$opsi->opsi3)}} {{price($opsi->harga)}}
+                                        </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                @endif
                                 <div class="avail-info">
                                     @if(!empty($produk->stok))
                                     <span class="instock">Available, Stock <span class="ttl-stock">{{$produk->stok}} item</span></span>
@@ -217,7 +211,7 @@
 </section>
 
 <section id="midle-product-categories">
-    <div class="container">         
+    <div class="container">
         <div class="col-md-12">
             <div id="payment" align="center">
                 <div class="row">
@@ -226,41 +220,31 @@
                             <p class="payment-title">Metode Pembayaran :</p>
                         </div>
                         <div class="col-md-9 payment-img">
-                            @foreach(list_banks() as $value)
+                            @if(list_banks()->count() > 0)
+                                @foreach(list_banks() as $value)
                                 @if($value->status == 1)
-                                <div class="col-xs-6 col-md-2">
                                     <img class="img-responsive img-payment" src="{{bank_logo($value)}}" alt="{{$value->bankdefault->nama}}" title="{{$value->bankdefault->nama}}" />
-                                </div>
                                 @endif
-                            @endforeach
+                                @endforeach
+                            @endif
                             @if(list_payments()->count() > 0)
                                 @foreach(list_payments() as $pay)
                                     @if($pay->nama == 'ipaymu' && $pay->aktif == 1)
-                                    <div class="col-xs-6 col-md-2">
                                         <img class="img-responsive img-payment" src="{{url('img/bank/ipaymu.jpg')}}" alt="Ipaymu" title="Ipaymu" />
-                                    </div>
                                     @endif
                                     @if($pay->nama == 'bitcoin' && $pay->aktif == 1)
-                                    <div class="col-xs-6 col-md-2">
                                         <img class="img-responsive img-payment" src="{{url('img/bitcoin.png')}}" alt="Bitcoin" title="Bitcoin" />
-                                    </div>
                                     @endif
                                     @if($pay->nama == 'paypal' && $pay->aktif == 1)
-                                    <div class="col-xs-6 col-md-2">
                                         <img class="img-responsive img-payment" src="{{url('img/bank/paypal.png')}}" alt="Paypal" title="Paypal" />
-                                    </div>
                                     @endif
                                 @endforeach
                             @endif
                             @if(count(list_dokus()) > 0 && list_dokus()->status == 1)
-                            <div class="col-xs-6 col-md-2">
                                 <img class="img-responsive img-payment" src="{{url('img/bank/doku.jpg')}}" alt="Doku Myshortcart" title="Doku" />
-                            </div>
                             @endif
                             @if(count(list_veritrans()) > 0 && list_veritrans()->status == 1 && list_veritrans()->type == 1)
-                            <div class="col-xs-6 col-md-2">
-                                <img class="img-responsive img-payment" src="{{url('img/bank/veritrans.png')}}" alt="Veritrans" title="Veritrans">
-                            </div>
+                                <img class="img-responsive img-payment midtrans" src="{{url('img/bank/midtrans.png')}}" alt="Midtrans" title="Midtrans">
                             @endif
                         </div>
                     </div>

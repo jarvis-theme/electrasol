@@ -20,7 +20,7 @@
                             <div class="single-products">
                                 <div class="productinfo">
                                     <img class="img-responsive" src="{{url(product_image_url($home->gambar1,'medium'))}}" alt="{{$home->nama}}" />
-                                    <p>{{short_description($home->nama,20)}}</p>
+                                    <p>{{short_description($home->nama,12)}}</p>
                                     <h2>{{price($home->hargaJual)}}</h2>
                                     <div class="btn-group col-xs-12 col-sm-12" role="group" aria-label="Default button group">
                                         <a type="button" class="btn btn-default col-xs-4 col-sm-3" href="{{product_url($home)}}" id="view-home"><i class="fa fa-eye"></i></a>

@@ -3,11 +3,12 @@
         <div class="col-md-12">
             <div class="features_items">
                 <div class="row">
-                    <div id="center_column" class="col-xs-12 col-sm-9 pull-right">
-                        {{Form::open(array('url'=>'konfirmasiorder','method'=>'post','class'=>'form-inline'))}}
+                    <div class="col-sm-3 pull-right"></div>
+                    <div id="center_column" class="col-xs-12 col-sm-5 pull-right bgrey center">
+                        {{Form::open(array('url'=>'konfirmasiorder','method'=>'post','class'=>'form-inline','id'=>'order-confirmation'))}}
                             <div class="confirm">
                                 <h2>Konfirmasi Order</h2>
-                                <p class="form-group col-xs-12 col-sm-9">
+                                <p class="form-group col-xs-12 col-sm-6">
                                     <input class="form-control" name="kodeorder" placeholder="Kode Order" type="text" required>
                                 </p>
                                 <button class="btn btn-danger" type="submit">Cari Kode</button>

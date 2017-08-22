@@ -6,7 +6,7 @@
                     @if(count(slideshow()) > 0)
                     <ol class="carousel-indicators">
                         @for($i = 0; $i < slideshow()->count(); $i++)
-                        <li data-target="#carousel-example-generic" data-slide-to="$i" {{$i==0 ? 'class="active"' : ''}}></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="{{$i}}" {{$i==0 ? 'class="active"' : ''}}></li>
                         @endfor
                     </ol>
                     @endif
