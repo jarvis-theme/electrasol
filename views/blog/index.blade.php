@@ -95,6 +95,7 @@
                                             <small><i class="fa fa-calendar"></i> {{waktuTgl($blog->updated_at)}}</small>&nbsp;&nbsp;
                                             <span class="date-post"><i class="fa fa-tags"></i> <a href="{{blog_category_url(@$blog->kategori)}}" class="black">{{@$blog->kategori->nama}}</a></span>
                                         </p>
+                                        <img src="{{ imgString($blog->isi) }}" class="blog-img" />
                                         <p>
                                             {{shortDescription($blog->isi,300)}}<br>
                                             <a href="{{blog_url($blog)}}" class="theme">Baca Selengkapnya →</a>

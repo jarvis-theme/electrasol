@@ -9,7 +9,7 @@
             <div class="block my_account">
                 <div><h2>My Account</h2></div>
                 <ul class="nav">
-                    <li class="active"><a href="{{url('member')}}">Daftar Pembelian</a></li>                         
+                    <li class="active"><a href="{{url('member')}}">Daftar Pembelian</a></li>
                     <li><a href="{{url('member/profile/edit')}}">Ubah Profil</a></li>
                 </ul>
             </div>            

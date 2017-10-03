@@ -2067,3 +2067,6 @@ article .bgrey { padding: 0 20px; margin-bottom: 20px; }
 .midtrans { padding: 10px; background: #f0f0f0; }
 .my_account { background: #fff; padding: 0 10px 10px; }
 .my_account .active { background: #f6f6f6; }
+.picmix { width: 37px; }
+article img { max-width: 100%; }
+div.page img { max-width: 100%; }

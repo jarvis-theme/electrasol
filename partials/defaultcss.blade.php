@@ -4,9 +4,9 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 
     @if($tema->isiCss=='')  
-    {{generate_theme_css('electrasol/assets/css/main.css?v=001')}}
+    {{generate_theme_css('electrasol/assets/css/main.css?v=005')}}
     @else   
-    {{generate_theme_css('electrasol/assets/css/editmain.css')}}
+    {{generate_theme_css('electrasol/assets/css/editmain.css?v=005')}}
     @endif  
     {{generate_theme_css('electrasol/assets/css/prettyPhoto.css')}}
     {{generate_theme_css('electrasol/assets/css/price-range.css')}}
